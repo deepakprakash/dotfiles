@@ -91,6 +91,7 @@ fresh shell/zsh/zsh-syntax-highlighting.zsh --file=~/.zshrc
 # fresh markryall/dotfiles shell/aliases/dvcs.sh
 
 fresh shell/exports.sh
+fresh shell/lib/\*
 fresh shell/aliases/\*
 fresh shell/functions/\*
 
