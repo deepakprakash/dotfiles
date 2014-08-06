@@ -13,9 +13,14 @@ bindkey -M vicmd 'q' push-line
 
 if [[ "${terminfo[kcuu1]}" != "" ]]; then
   bindkey "${terminfo[kcuu1]}" up-line-or-search      # start typing + [Up-Arrow] - fuzzy find history forward
+else
+  bindkey "^[[A" up-line-or-search
 fi
+
 if [[ "${terminfo[kcud1]}" != "" ]]; then
   bindkey "${terminfo[kcud1]}" down-line-or-search    # start typing + [Down-Arrow] - fuzzy find history backward
+else
+  bindkey "^[[B" down-line-or-search
 fi
 
 # bindkey '^R' history-incremental-search-backward
