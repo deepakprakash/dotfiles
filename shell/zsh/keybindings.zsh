@@ -1,10 +1,11 @@
+# Use the vim keybindings
 bindkey -v
 
 # bindkey '^R' history-incremental-search-backward
 
-# # option + right/left
-# bindkey '\e\e[C' vi-forward-word
-# bindkey '\e\e[D' vi-backward-word
+# option + right/left
+bindkey '\e\e[C' vi-forward-word
+bindkey '\e\e[D' vi-backward-word
 
 # # search history using up/down arrows
 # autoload -U history-search-end
@@ -22,11 +23,11 @@ bindkey -v
 # bindkey '^[3;5~' delete-char
 # bindkey '\e[3~' delete-char
 
-# bindkey -M viins '^a' beginning-of-line
-# bindkey -M viins '^e' end-of-line
+bindkey -M viins '^a' beginning-of-line
+bindkey -M viins '^e' end-of-line
 
-# # clear the current line then bring it back after the next command
-# bindkey -M vicmd 'q' push-line
+# clear the current line then bring it back after the next command
+bindkey -M vicmd 'q' push-line
 
 if [[ "${terminfo[kcuu1]}" != "" ]]; then
   bindkey "${terminfo[kcuu1]}" up-line-or-search      # start typing + [Up-Arrow] - fuzzy find history forward
