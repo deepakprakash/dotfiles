@@ -1,4 +1,4 @@
-bindkey -v
+bindkey -e
 
 # bindkey '^R' history-incremental-search-backward
 
