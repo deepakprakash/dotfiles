@@ -1,4 +1,4 @@
-# alias ls="ls -lGFh"
+alias ls="ls -lFh --color=auto"
 alias history="fc -l 1"
 alias internet\?="ping 8.8.8.8"
 alias b="bundle check || bundle"
