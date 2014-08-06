@@ -23,7 +23,7 @@ fresh-options --file=~/.zshrc --marker
   fresh shell/zsh/title.zsh
   fresh shell/zsh/aliases.zsh
   fresh shell/zsh/zshrc
-  # fresh shell/zsh/keybindings.zsh
+  fresh shell/zsh/keybindings.zsh
 
   # this loads the shell files and needs to be at the bottom of the zshrc for
   # compdef be availiable
