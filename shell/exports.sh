@@ -21,3 +21,7 @@ fi
 # used by `dvcs` alias
 export GH_BASE=~/Dev/git
 export GH_USER="$GH_LOGIN"
+
+# Virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
