@@ -3,9 +3,7 @@
 ## Installation
 
 ``` sh
-FRESH_LOCAL_SOURCE=twe4ked/dotfiles bash -c "`curl -sL get.freshshell.com`"
-chsh -s /bin/zsh
-cd ~/.dotfiles && brew bundle
+FRESH_LOCAL_SOURCE=deepakprakash/dotfiles bash -c "`curl -sL get.freshshell.com`"
 ```
 
 My dotfiles are managed by [fresh].
