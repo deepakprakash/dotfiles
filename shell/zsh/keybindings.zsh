@@ -1,5 +1,5 @@
 # Use the vim keybindings
-bindkey -v
+bindkey -e
 
 # option + right/left
 bindkey '\e\e[C' vi-forward-word
