@@ -90,10 +90,10 @@ fresh shell/zsh/zsh-syntax-highlighting.zsh --file=~/.zshrc
 # fresh jasoncodes/dotfiles shell/functions/realpath.sh
 # fresh markryall/dotfiles shell/aliases/dvcs.sh
 
-fresh shell/lib/\*
-fresh shell/aliases/\*
 fresh shell/functions/\*
 fresh shell/exports.sh
+fresh shell/lib/\*
+fresh shell/aliases/\*
 
 # irb
 # fresh-options --file=~/.irbrc
