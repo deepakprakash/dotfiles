@@ -40,9 +40,9 @@ function prompt_pwd() {
       if [[ $part[1,1] == "." ]]; then
         # if this part of the path starts with a dot, then keep
         # the 2nd letter aswell
-        parts[i]="$part[1,2]"
+        parts[i]="$part[1,2]…"
       else
-        parts[i]="$part[1,1]"
+        parts[i]="$part[1,1]…"
       fi
     fi
   done
