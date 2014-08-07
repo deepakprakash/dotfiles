@@ -11,17 +11,22 @@ bindkey -M viins '^e' end-of-line
 # clear the current line then bring it back after the next command
 bindkey -M vicmd 'q' push-line
 
-# zmodload zsh/terminfo
 
+# ************************************************************************
+# **** Bind Up/Down keys to history search
+# This DOES NOT work reliably on osx as well as linux. Using the option
+# towards the end of the file
+# zmodload zsh/terminfo
 # # start typing + [Up-Arrow] - fuzzy find history forward
 # if [[ "${terminfo[kcuu1]}" != "" ]]; then
 #   bindkey "${terminfo[kcuu1]}" up-line-or-search
 # fi
-
 # # start typing + [Down-Arrow] - fuzzy find history backward
 # if [[ "${terminfo[kcud1]}" != "" ]]; then
 #   bindkey "${terminfo[kcud1]}" down-line-or-search
 # fi
+# ************************************************************************
+
 
 # bindkey '^R' history-incremental-search-backward
 
@@ -41,28 +46,36 @@ bindkey -M vicmd 'q' push-line
 # bindkey '^[3;5~' delete-char
 # bindkey '\e[3~' delete-char
 
-
+# ************************************************************************
 # BASED ON http://zshwiki.org/home/zle/bindkeys
+# This seems to be the only way to get up/down keys working reliably on
+# osx as well as Ubuntu. Uncomment the req keys if you plan on using them.
 typeset -A key
 
-key[Home]=${terminfo[khome]}
-key[End]=${terminfo[kend]}
-key[Insert]=${terminfo[kich1]}
-key[Delete]=${terminfo[kdch1]}
 key[Up]=${terminfo[kcuu1]}
 key[Down]=${terminfo[kcud1]}
-key[Left]=${terminfo[kcub1]}
-key[Right]=${terminfo[kcuf1]}
-key[PageUp]=${terminfo[kpp]}
-key[PageDown]=${terminfo[knp]}
+key[Delete]=${terminfo[kdch1]}
+# key[Home]=${terminfo[khome]}
+# key[End]=${terminfo[kend]}
+# key[Insert]=${terminfo[kich1]}
+# key[Left]=${terminfo[kcub1]}
+# key[Right]=${terminfo[kcuf1]}
+# key[PageUp]=${terminfo[kpp]}
+# key[PageDown]=${terminfo[knp]}
 
 # setup key accordingly
+# start typing + [Up-Arrow] - fuzzy find history forward
+[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-search # history-beginning-search-backward
+
+# start typing + [Down-Arrow] - fuzzy find history backward
+[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-search # history-beginning-search-forward
+
+# make the delete key (or Fn + Delete on the Mac) work instead of outputting a ~
+[[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
+
 # [[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
 # [[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
 # [[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
-# [[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
-[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-search # history-beginning-search-backward
-[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-search # history-beginning-search-forward
 # [[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
 # [[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
 
@@ -76,3 +89,5 @@ function zle-line-finish () {
 }
 zle -N zle-line-init
 zle -N zle-line-finish
+# ************************************************************************
+
