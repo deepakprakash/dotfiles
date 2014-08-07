@@ -61,8 +61,8 @@ key[PageDown]=${terminfo[knp]}
 # [[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
 # [[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
 # [[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
-[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-search
-[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-search
+[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      history-beginning-search-backward #up-line-or-search
+[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    history-beginning-search-forward #down-line-or-search
 # [[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
 # [[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
 
