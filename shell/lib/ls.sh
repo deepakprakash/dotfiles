@@ -5,4 +5,4 @@ case $OSTYPE in
     alias ls="ls -Fh --color=auto" ;;
 esac
 
-alias la="ls -a"
+alias la="ls -al"
