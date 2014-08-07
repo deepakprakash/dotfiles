@@ -1,10 +1,10 @@
 export DOTFILES=~/.dotfiles                 # here
 export ARCHFLAGS='-arch x86_64'             # archflags
 export GREP_OPTIONS='--color=auto'          # double rainbow!
-export PATH=$HOME/bin:/usr/local/bin:$PATH  # path settings
+# export PATH=$HOME/bin:/usr/local/bin:$PATH  # path settings
 
-# path_prepend "/usr/local/bin"
-# path_prepend "$HOME/bin"
+path_prepend "/usr/local/bin"
+path_prepend "$HOME/bin"
 
 # path_add "/usr/local/sbin"
 # path_add "/usr/local/share/npm/bin"
