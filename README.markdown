@@ -3,7 +3,7 @@
 ## Installation
 
 ``` sh
-FRESH_LOCAL_SOURCE=deepakprakash/dotfiles bash -c "`curl -sL get.freshshell.com`"
+FRESH_LOCAL_SOURCE=deepakprakash/dotfiles bash -c "`curl -sL https://raw.githubusercontent.com/freshshell/fresh/master/install.sh`"
 ```
 
 My dotfiles are managed by [fresh].
