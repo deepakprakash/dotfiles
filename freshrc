@@ -21,7 +21,7 @@ fresh-options --file=~/.zshrc --marker
   fresh shell/zsh/completion.zsh
   fresh shell/zsh/prompt.zsh
   fresh shell/zsh/title.zsh
-  fresh shell/zsh/aliases.zsh
+  fresh shell/zsh/functions.zsh
   fresh shell/zsh/zshrc
   fresh shell/zsh/keybindings.zsh
 
