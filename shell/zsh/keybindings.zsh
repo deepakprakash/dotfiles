@@ -11,14 +11,21 @@ bindkey -M viins '^e' end-of-line
 # clear the current line then bring it back after the next command
 bindkey -M vicmd 'q' push-line
 
+# start typing + [Up-Arrow] - fuzzy find history forward
 if [[ "${terminfo[kcuu1]}" != "" ]]; then
-  bindkey "${terminfo[kcuu1]}" up-line-or-search      # start typing + [Up-Arrow] - fuzzy find history forward
+  # Linux
+  bindkey "${terminfo[kcuu1]}" up-line-or-search
 else
+  # Mac
   bindkey "\e[A" up-line-or-search
 fi
+
+# start typing + [Down-Arrow] - fuzzy find history backward
 if [[ "${terminfo[kcud1]}" != "" ]]; then
-  bindkey "${terminfo[kcud1]}" down-line-or-search    # start typing + [Down-Arrow] - fuzzy find history backward
+  # Linux
+  bindkey "${terminfo[kcud1]}" down-line-or-search
 else
+  # Mac
   bindkey "\e[B" down-line-or-search
 fi
 
