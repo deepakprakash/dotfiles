@@ -4,3 +4,5 @@ case $OSTYPE in
   linux*)
     alias ls="ls -Fh --color=auto" ;;
 esac
+
+alias la="ls -a"
