@@ -1,3 +1,3 @@
 # Virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+source_if_exists /usr/local/bin/virtualenvwrapper.sh
