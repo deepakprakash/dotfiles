@@ -99,7 +99,7 @@ fresh shell/exports.sh
 fresh shell/lib/\*
 fresh shell/aliases.sh
 
-fresh shell/local.sh --file=~/.zshrc
+fresh shell/local.sh
 
 # irb
 # fresh-options --file=~/.irbrc
