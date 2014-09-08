@@ -91,6 +91,10 @@ fresh shell/zsh/zsh-syntax-highlighting.zsh --file=~/.zshrc
 # fresh markryall/dotfiles shell/aliases/dvcs.sh
 
 fresh shell/functions/\*
+if [[ "$(uname)" == "Darwin" ]]; then
+  fresh osx/functions/\*
+fi
+
 fresh shell/exports.sh
 fresh shell/lib/\*
 fresh shell/aliases.sh
