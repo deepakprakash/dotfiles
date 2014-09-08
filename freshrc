@@ -119,6 +119,8 @@ fresh shell/local.sh
 #   fresh defunkt/repl bin/repl
 #   fresh hackling/morse bin/morse
 # fresh-options
+fresh deepakprakash/backup bin/backup.sh --bin=~/bin/backup
+
 fresh sivel/speedtest-cli speedtest_cli.py --bin=~/bin/speedtest
 
 # git hooks
