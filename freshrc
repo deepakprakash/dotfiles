@@ -119,7 +119,7 @@ fresh shell/local.sh
 #   fresh defunkt/repl bin/repl
 #   fresh hackling/morse bin/morse
 # fresh-options
-fresh deepakprakash/backup bin/backup.sh --bin=~/bin/
+fresh deepakprakash/backup bin/backup.sh --bin=~/bin/backup
 if [[ "$(uname)" == "Darwin" ]]; then
   echo "Install the backup trigger.."
   ( cd $FRESH_PATH/source/deepakprakash/backup/osx && ./install.sh )
