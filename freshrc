@@ -49,35 +49,27 @@ fresh zsh-users/zsh-syntax-highlighting highlighters/brackets/brackets-highlight
 fresh shell/zsh/zsh-syntax-highlighting.zsh --file=~/.zshrc
 
 # Vim
-# fresh-options --file=~/.vimrc --marker=\"
-#   fresh vim/leader.vim
-#   fresh vim/vundle_before.vim
-#   fresh vim/vundle.vim
-#   fresh vim/vundle_after.vim
-#   fresh vim/functions.vim
-#   fresh vim/keybindings.vim
-#   fresh vim/plugin_config/\*
-#   fresh vim/auto_commands.vim
-#   fresh vim/vimrc
-#   fresh jasoncodes/dotfiles vim/mappings/indent.vim
-#   fresh jasoncodes/dotfiles vim/mappings/pasteboard.vim
-#   fresh jasoncodes/dotfiles vim/mappings/whitespace.vim
-#   fresh jasoncodes/dotfiles vim/config/undo.vim
-#   fresh jasoncodes/dotfiles vim/config/tags.vim
-#   fresh jasoncodes/dotfiles vim/config/marked.vim
-#   fresh jasoncodes/dotfiles vim/config/auto_mkdir.vim
-#   fresh jasoncodes/dotfiles vim/config/search.vim
-#   fresh jasoncodes/dotfiles vim/config/cursor.vim
-#   fresh jasoncodes/dotfiles vim/config/bubbling.vim
-#   fresh jasoncodes/dotfiles vim/functions.vim
-#   fresh jasoncodes/dotfiles vim/plugins/ctrlp.vim
-#   # Ruby autocommands
-#   fresh jasoncodes/dotfiles vim/plugins/ruby.vim --filter='sed -n 11,13p' --ref=da7d4a8
-#   fresh nathanaelkane/dotfiles vim/plugins/easymotion.vim
-#   fresh hackling/dotfiles vim/keybindings/numpad.vim
-# fresh-options
-# fresh vim/gvimrc --file
-# fresh vim/colors --file=~/.vim/colors/
+fresh-options --file=~/.vimrc --marker=\"
+  fresh jasoncodes/dotfiles vim/leader.vim
+  fresh twe4ked/dotfiles vim/vundle_before.vim
+  fresh jasoncodes/dotfiles vim/vundle.vim
+  fresh jasoncodes/dotfiles vim/plugins/\*.vim
+  fresh twe4ked/dotfiles vim/vundle_after.vim
+  fresh jasoncodes/dotfiles vim/global.vim
+  fresh jasoncodes/dotfiles vim/config/\*.vim
+  fresh jasoncodes/dotfiles vim/functions.vim
+  fresh jasoncodes/dotfiles vim/mappings.vim
+  fresh jasoncodes/dotfiles vim/mappings/\*.vim
+  fresh jasoncodes/dotfiles vim/auto_commands.vim
+  fresh hackling/dotfiles vim/plugins/surround.vim
+fresh-options
+fresh jasoncodes/dotfiles vim/gvimrc --file
+fresh jasoncodes/dotfiles vim/colors --file=~/.vim/colors/
+init_vim() {
+  if which vim &> /dev/null && ! [ -d $HOME/.vim/bundle/vundle ]; then
+    vim || [ -d $HOME/.vim/bundle/vundle ]
+  fi
+}
 
 # Shell
 # fresh jasoncodes/dotfiles shell/aliases/\*
@@ -136,6 +128,8 @@ fresh_after_build() {
   if which chflags &> /dev/null; then
     chflags hidden ~/bin
   fi
+  init_vim
+
   if [[ "$(uname)" == "Darwin" ]]; then
     install_backup_trigger
   fi
