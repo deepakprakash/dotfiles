@@ -7,13 +7,8 @@ fresh freshshell/fresh-open bin/fresh-open --bin
 # Config
 fresh-options --file
   fresh config/\*
-  # fresh jasoncodes/dotfiles config/inputrc
-  # fresh jasoncodes/dotfiles config/tmux.conf
-  # fresh jasoncodes/dotfiles config/psqlrc
 fresh-options
 
-# fresh config/ranger/rc.conf --file=~/.config/ranger/rc.conf
-# fresh henrik/dotfiles rubyrc --file=~/.pryrc --filter='cat; echo include RubyRC'
 fresh nathanaelkane/dotfiles config/tmux/ctrlg.conf --file=~/.tmux.conf
 
 # Zsh
@@ -39,14 +34,13 @@ fresh-options --file=~/.zshrc --marker
 fresh-options
 
 fresh zsh-users/zsh-completions src/_ack --file=completion/_ack
-# fresh zsh-users/zsh-completions src/_heroku --file=completion/_heroku
 fresh robbyrussell/oh-my-zsh plugins/brew/_brew --file=completion/_brew --ref=55f09f8
-# fresh shell/zsh/completions/_gh --file=completion/_gh
 
 fresh zsh-users/zsh-syntax-highlighting zsh-syntax-highlighting.zsh --file=vendor/zsh-syntax-highlighting.zsh
 fresh zsh-users/zsh-syntax-highlighting highlighters/main/main-highlighter.zsh --file=vendor/highlighters/main/main-highlighter.zsh
 fresh zsh-users/zsh-syntax-highlighting highlighters/brackets/brackets-highlighter.zsh --file=vendor/highlighters/brackets/brackets-highlighter.zsh
 fresh shell/zsh/zsh-syntax-highlighting.zsh --file=~/.zshrc
+
 
 # Vim
 fresh-options --file=~/.vimrc --marker=\"
@@ -71,63 +65,34 @@ init_vim() {
   fi
 }
 
+
 # Shell
-# fresh jasoncodes/dotfiles shell/aliases/\*
-# fresh jasoncodes/dotfiles shell/editor.sh
-# fresh jasoncodes/dotfiles shell/config/filters.sh
-# fresh jasoncodes/dotfiles shell/config/pager.sh
-# fresh jasoncodes/dotfiles shell/config/heroku.sh
-# fresh jasoncodes/dotfiles shell/config/rbenv.sh
-# fresh jasoncodes/dotfiles shell/config/tmux.sh
-# fresh jasoncodes/dotfiles shell/functions/realpath.sh
-# fresh markryall/dotfiles shell/aliases/dvcs.sh
-
 fresh shell/functions/\*
-if [[ "$(uname)" == "Darwin" ]]; then
-  fresh osx/functions/\*
-fi
-
 fresh shell/exports.sh
 fresh shell/lib/\*
 fresh shell/aliases.sh
-
 fresh shell/local.sh
 
-# irb
-# fresh-options --file=~/.irbrc
-#   fresh config/irb/encoding.rb
-#   fresh jasoncodes/dotfiles config/irbrc
-#   fresh config/irb/prompt.rb
-# fresh-options
+if [[ "$(uname)" == "Darwin" ]]; then
+  # OSX Specific shell functionality
+  fresh osx/functions/\*
+fi
 
-# bin
-# fresh-options --bin
-#   fresh bin/\*
-#   fresh jasoncodes/dotfiles bin/\*
-#   fresh jasoncodes/dotfiles bin/wemux/\*
-#   fresh pengwynn/dotfiles bin/gxpr
-#   fresh pengwynn/dotfiles bin/git-go
-#   fresh pengwynn/dotfiles bin/+x
-#   fresh defunkt/repl bin/repl
-#   fresh hackling/morse bin/morse
-# fresh-options
+
+# Backup
 fresh deepakprakash/backup bin/backup.sh --bin=~/bin/backup
 install_backup_trigger () {
   echo "Install the backup trigger.."
   ( cd $FRESH_PATH/source/deepakprakash/backup/osx && ./install.sh )
 }
 
+
+# Utils
 fresh sivel/speedtest-cli speedtest_cli.py --bin=~/bin/speedtest
 
-# git hooks
-# fresh https://gist.github.com/5431107.git pre-commit --bin=~/bin/_git-pre-commit-hook
-# mkdir -p ~/.git_template/hooks/
-# ln -sf ~/bin/_git-pre-commit-hook ~/.git_template/hooks/pre-commit
 
 fresh_after_build() {
-  if which chflags &> /dev/null; then
-    chflags hidden ~/bin
-  fi
+
   init_vim
 
   if [[ "$(uname)" == "Darwin" ]]; then
