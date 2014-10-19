@@ -11,6 +11,7 @@ findutils
 ## Install more recent versions of some OS X tools
 homebrew/dupes/grep
 
+## Essentials
 bash
 rename
 python
