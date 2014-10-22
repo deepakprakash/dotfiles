@@ -179,59 +179,80 @@ sudo rm /Private/var/vm/sleepimage
 sudo pmset -a sms 0
 # Reset: sudo pmset -a sms 1
 
-# ###############################################################################
-# # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
-# ###############################################################################
+###############################################################################
+# Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
+###############################################################################
 
-# # Trackpad: enable tap to click for this user and for the login screen
-# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-# defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-# defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+# Trackpad: enable tap to click for this user and for the login screen
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+# Reset:
+# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool false
+# defaults -currentHost delete NSGlobalDomain com.apple.mouse.tapBehavior
+# defaults delete NSGlobalDomain com.apple.mouse.tapBehavior
 
-# # Trackpad: map bottom right corner to right-click
-# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
-# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-# defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
-# defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+# Trackpad: map bottom right corner to right-click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+# Reset: One command is missing because that is the default in Yosemite in any case.
+# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 0
+# defaults -currentHost delete NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior
+# defaults -currentHost delete NSGlobalDomain com.apple.trackpad.enableSecondaryClick
 
-# # Disable “natural” (Lion-style) scrolling
+
+# Disable “natural” (Lion-style) scrolling [I like this - hence commented]
 # defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+# Reset: defaults delete NSGlobalDomain com.apple.swipescrolldirection
 
-# # Increase sound quality for Bluetooth headphones/headsets
-# defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+# Increase sound quality for Bluetooth headphones/headsets
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+# Reset: defaults delete com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)"
 
-# # Enable full keyboard access for all controls
-# # (e.g. enable Tab in modal dialogs)
-# defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+# Enable full keyboard access for all controls
+# (e.g. enable Tab in modal dialogs)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+# Reset: defaults delete NSGlobalDomain AppleKeyboardUIMode
 
-# # Use scroll gesture with the Ctrl (^) modifier key to zoom
-# defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-# defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
-# # Follow the keyboard focus while zoomed in
-# defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+# Use scroll gesture with the Ctrl (^) modifier key to zoom
+defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+# Reset: defaults delete com.apple.universalaccess closeViewScrollWheelToggle; defaults delete com.apple.universalaccess HIDScrollZoomModifierMask
 
-# # Disable press-and-hold for keys in favor of key repeat
-# defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+# Follow the keyboard focus while zoomed in
+defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+# Reset: defaults delete com.apple.universalaccess closeViewZoomFollowsFocus
 
-# # Set a blazingly fast keyboard repeat rate
-# defaults write NSGlobalDomain KeyRepeat -int 0
+# Disable press-and-hold for keys in favor of key repeat
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+# Reset: defaults delete NSGlobalDomain ApplePressAndHoldEnabled
 
-# # Set language and text formats
-# # Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
-# # `Inches`, `en_GB` with `en_US`, and `true` with `false`.
+# Set a blazingly fast keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 0
+# Reset: defaults delete NSGlobalDomain KeyRepeat
+
+# Set language and text formats
+# Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
+# `Inches`, `en_GB` with `en_US`, and `true` with `false`.
 # defaults write NSGlobalDomain AppleLanguages -array "en" "nl"
 # defaults write NSGlobalDomain AppleLocale -string "en_GB@currency=EUR"
-# defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
-# defaults write NSGlobalDomain AppleMetricUnits -bool true
+defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+# Reset: defaults delete NSGlobalDomain AppleMeasurementUnits
+defaults write NSGlobalDomain AppleMetricUnits -bool true
+# Reset: defaults delete NSGlobalDomain AppleMetricUnits
 
-# # Set the timezone; see `sudo systemsetup -listtimezones` for other values
+# Set the timezone; see `sudo systemsetup -listtimezones` for other values
 # sudo systemsetup -settimezone "Europe/Brussels" > /dev/null
 
-# # Disable auto-correct
-# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+# Set the time from network/location
+sudo systemsetup -setusingnetworktime on > /dev/null
+# Reset: sudo systemsetup -setusingnetworktime off > /dev/null
 
-# # Stop iTunes from responding to the keyboard media keys
-# #launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
+# Disable auto-correct
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool 
+# Reset: defaults delete NSGlobalDomain NSAutomaticSpellingCorrectionEnabled
 
 # ###############################################################################
 # # Screen                                                                      #
