@@ -168,13 +168,14 @@ sudo pmset -a hibernatemode 0
 
 # Remove the sleep image file to save disk space
 sudo rm /Private/var/vm/sleepimage
-# TODO: Check if the below needs to be done.
+
 # Create a zero-byte file instead…
+# [I don't see the file being created again. Hence below is commented out]
 # sudo touch /Private/var/vm/sleepimage
 # …and make sure it can’t be rewritten
 # sudo chflags uchg /Private/var/vm/sleepimage
 
-# # Disable the sudden motion sensor as it’s not useful for SSDs
+# Disable the sudden motion sensor as it’s not useful for SSDs
 sudo pmset -a sms 0
 # Reset: sudo pmset -a sms 1
 
