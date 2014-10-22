@@ -19,8 +19,10 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # sudo scutil --set LocalHostName "0x6D746873"
 # sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "0x6D746873"
 
-# Set standby delay to 24 hours (default is 1 hour)
-# sudo pmset -a standbydelay 86400
+# Set standby delay to 8 hours (default is 1 hour)
+# Speeds up wake from slee. Ref: http://osxdaily.com/2013/01/21/mac-slow-wake-from-sleep-fix/
+sudo pmset -a standbydelay 28800
+# Reset: sudo pmset -a standbydelay 4200
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
