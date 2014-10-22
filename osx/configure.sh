@@ -142,9 +142,11 @@ sudo systemsetup -setrestartfreeze on
 
 # Disable smart quotes as they’re annoying when typing code
 # defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+# Reset: defaults delete NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled
 
 # Disable smart dashes as they’re annoying when typing code
 # defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+# Reset: defaults delete NSGlobalDomain NSAutomaticDashSubstitutionEnabled
 
 # Set a custom wallpaper image. `DefaultDesktop.jpg` is already a symlink, and
 # all wallpapers are in `/Library/Desktop Pictures/`. The default is `Wave.jpg`.
