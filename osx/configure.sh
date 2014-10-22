@@ -251,148 +251,206 @@ sudo systemsetup -setusingnetworktime on > /dev/null
 # Reset: sudo systemsetup -setusingnetworktime off > /dev/null
 
 # Disable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool 
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 # Reset: defaults delete NSGlobalDomain NSAutomaticSpellingCorrectionEnabled
 
-# ###############################################################################
-# # Screen                                                                      #
-# ###############################################################################
+# Stop iTunes from responding to the keyboard media keys
+#launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
-# # Require password immediately after sleep or screen saver begins
-# defaults write com.apple.screensaver askForPassword -int 1
-# defaults write com.apple.screensaver askForPasswordDelay -int 0
+###############################################################################
+# Screen                                                                      #
+###############################################################################
 
-# # Save screenshots to the desktop
-# defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+# Require password immediately after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 1 # This is default in any case
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+# Reset: defaults write com.apple.screensaver askForPasswordDelay -int 300
 
-# # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
-# defaults write com.apple.screencapture type -string "png"
+# Save screenshots to the desktop or any dir of your choice
+defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+# Reset: defaults delete com.apple.screencapture location
 
-# # Disable shadow in screenshots
-# defaults write com.apple.screencapture disable-shadow -bool true
+# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF). PNG is default
+defaults write com.apple.screencapture type -string "png"
+# Reset: defaults delete com.apple.screencapture type
 
-# # Enable subpixel font rendering on non-Apple LCDs
-# defaults write NSGlobalDomain AppleFontSmoothing -int 2
+# Disable shadow in screenshots
+defaults write com.apple.screencapture disable-shadow -bool true
+# Reset: defaults delete com.apple.screencapture disable-shadow
 
-# # Enable HiDPI display modes (requires restart)
-# sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+# Enable subpixel font rendering on non-Apple LCDs
+defaults write NSGlobalDomain AppleFontSmoothing -int 2
+# Reset: defaults delete NSGlobalDomain AppleFontSmoothing
 
-# ###############################################################################
-# # Finder                                                                      #
-# ###############################################################################
+# Enable HiDPI display modes (requires restart)
+sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+# Reset: sudo defaults delete /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled
 
-# # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
-# defaults write com.apple.finder QuitMenuItem -bool true
+###############################################################################
+# Finder                                                                      #
+###############################################################################
 
-# # Finder: disable window animations and Get Info animations
+# Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
+defaults write com.apple.finder QuitMenuItem -bool true
+# Reset: defaults delete com.apple.finder QuitMenuItem
+
+# Finder: disable window animations and Get Info animations
 # defaults write com.apple.finder DisableAllAnimations -bool true
+# Reset: defaults delete com.apple.finder DisableAllAnimations
 
-# # Set Desktop as the default location for new Finder windows
-# # For other paths, use `PfLo` and `file:///full/path/here/`
-# defaults write com.apple.finder NewWindowTarget -string "PfDe"
-# defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
+# Set Desktop as the default location for new Finder windows
+# For other paths, use `PfLo` and `file:///full/path/here/`
+defaults write com.apple.finder NewWindowTarget -string "PfDe"
+# Reset: defaults delete com.apple.finder NewWindowTarget
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
+# Reset: defaults delete com.apple.finder NewWindowTargetPath
 
-# # Show icons for hard drives, servers, and removable media on the desktop
-# defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+# Show icons for hard drives, servers, and removable media on the desktop
+# defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true  # Default on Yosemite; `false` to hide
+
 # defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
-# defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
-# defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+# Reset: defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 
-# # Finder: show hidden files by default
-# #defaults write com.apple.finder AppleShowAllFiles -bool true
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+# Reset: defaults delete com.apple.finder ShowMountedServersOnDesktop
 
-# # Finder: show all filename extensions
-# defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+# defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true  # Default on Yosemite; `false` to hide
 
-# # Finder: show status bar
-# defaults write com.apple.finder ShowStatusBar -bool true
+# Finder: show hidden files by default
+defaults write com.apple.finder AppleShowAllFiles -bool true
+# Reset: defaults delete com.apple.finder AppleShowAllFiles
 
-# # Finder: show path bar
-# defaults write com.apple.finder ShowPathbar -bool true
+# Finder: show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+# Reset: defaults delete NSGlobalDomain AppleShowAllExtensions
 
-# # Finder: allow text selection in Quick Look
-# defaults write com.apple.finder QLEnableTextSelection -bool true
+# Finder: show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
 
-# # Display full POSIX path as Finder window title
-# defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+# Finder: show path bar
+defaults write com.apple.finder ShowPathbar -bool true
 
-# # When performing a search, search the current folder by default
-# defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+# Finder: allow text selection in Quick Look
+defaults write com.apple.finder QLEnableTextSelection -bool true
+# Reset: defaults delete com.apple.finder QLEnableTextSelection
 
-# # Disable the warning when changing a file extension
-# defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+# Display full POSIX path as Finder window title
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+# Reset: defaults delete com.apple.finder _FXShowPosixPathInTitle
 
-# # Enable spring loading for directories
-# defaults write NSGlobalDomain com.apple.springing.enabled -bool true
+# When performing a search, search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+# Reset: defaults delete com.apple.finder FXDefaultSearchScope
 
-# # Remove the spring loading delay for directories
-# defaults write NSGlobalDomain com.apple.springing.delay -float 0
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+# Reset: defaults delete com.apple.finder FXEnableExtensionChangeWarning
 
-# # Avoid creating .DS_Store files on network volumes
-# defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+# Enable spring loading for directories (open up directories when you drag files onto them)
+# This is enabled by default. `false` to turn off.
+defaults write NSGlobalDomain com.apple.springing.enabled -bool true
 
-# # Disable disk image verification
+# Reduce the spring loading delay for directories. `0` for no delay.
+defaults write NSGlobalDomain com.apple.springing.delay -float 0.2
+# Reset: defaults delete NSGlobalDomain com.apple.springing.delay -float 0.5
+
+# Avoid creating .DS_Store files on network volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+# Reset: defaults delete com.apple.desktopservices DSDontWriteNetworkStores
+
+# Disable disk image verification
 # defaults write com.apple.frameworks.diskimages skip-verify -bool true
 # defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 # defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+# Reset:
+# defaults delete com.apple.frameworks.diskimages skip-verify
+# defaults delete com.apple.frameworks.diskimages skip-verify-locked
+# defaults delete com.apple.frameworks.diskimages skip-verify-remote
 
-# # Automatically open a new Finder window when a volume is mounted
-# defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
-# defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
-# defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
+# Automatically open a new Finder window when a volume is mounted
+defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
+defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
+defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
+# Reset:
+# defaults delete com.apple.frameworks.diskimages auto-open-ro-root
+# defaults delete com.apple.frameworks.diskimages auto-open-rw-root
+# defaults delete com.apple.finder OpenWindowForNewRemovableDisk
 
-# # Show item info near icons on the desktop and in other icon views
-# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-# /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
-# /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+# Show item info near icons on the desktop and in other icon views
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
+# Reset:
+# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo false" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo false" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo false" ~/Library/Preferences/com.apple.finder.plist
 
-# # Show item info to the right of the icons on the desktop
+# Show item info to the right of the icons on the desktop
 # /usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist
+# Reset: /usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom true" ~/Library/Preferences/com.apple.finder.plist
 
-# # Enable snap-to-grid for icons on the desktop and in other icon views
-# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-# /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-# /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+# Enable snap-to-grid for icons on the desktop and in other icon views
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+# Reset:
+# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy none" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy none" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy none" ~/Library/Preferences/com.apple.finder.plist
 
-# # Increase grid spacing for icons on the desktop and in other icon views
+# Increase grid spacing for icons on the desktop and in other icon views
 # /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
 # /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
 # /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
+# Reset:
+# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 54" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:gridSpacing 54" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:gridSpacing 54" ~/Library/Preferences/com.apple.finder.plist
 
-# # Increase the size of icons on the desktop and in other icon views
+# Increase the size of icons on the desktop and in other icon views
 # /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
 # /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
 # /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
+# Reset:
+# /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
+# /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 64" ~/Library/Preferences/com.apple.finder.plist
 
-# # Use list view in all Finder windows by default
-# # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
-# defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
-# # Disable the warning before emptying the Trash
+# Use list view in all Finder windows by default
+# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Disable the warning before emptying the Trash
 # defaults write com.apple.finder WarnOnEmptyTrash -bool false
+# Reset: defaults write com.apple.finder WarnOnEmptyTrash -bool true
 
-# # Empty Trash securely by default
+# Empty Trash securely by default
 # defaults write com.apple.finder EmptyTrashSecurely -bool true
+# Reset: defaults delete com.apple.finder EmptyTrashSecurely
 
-# # Enable AirDrop over Ethernet and on unsupported Macs running Lion
-# defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
+# Enable AirDrop over Ethernet and on unsupported Macs running Lion
+defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
+# Reset: defaults delete com.apple.NetworkBrowser BrowseAllInterfaces
 
-# # Enable the MacBook Air SuperDrive on any Mac
+# Enable the MacBook Air SuperDrive on any Mac
 # sudo nvram boot-args="mbasd=1"
 
-# # Show the ~/Library folder
-# chflags nohidden ~/Library
+# Show the ~/Library folder
+chflags nohidden ~/Library
+# Reset: chflags hidden ~/Library
 
-# # Remove Dropbox’s green checkmark icons in Finder
+# Remove Dropbox’s green checkmark icons in Finder
 # file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
 # [ -e "${file}" ] && mv -f "${file}" "${file}.bak"
 
-# # Expand the following File Info panes:
-# # “General”, “Open with”, and “Sharing & Permissions”
-# defaults write com.apple.finder FXInfoPanesExpanded -dict \
-# 	General -bool true \
-# 	OpenWith -bool true \
-# 	Privileges -bool true
+# Expand the following File Info panes:
+# “General”, “Open with”, and “Sharing & Permissions”
+defaults write com.apple.finder FXInfoPanesExpanded -dict \
+	General -bool true \
+	OpenWith -bool true \
+	Privileges -bool true
+# Reset: defaults delete com.apple.finder FXInfoPanesExpanded
 
 # ###############################################################################
 # # Dock, Dashboard, and hot corners                                            #
