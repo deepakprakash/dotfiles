@@ -573,44 +573,57 @@ defaults write com.apple.dock wvous-bl-corner -int 10
 defaults write com.apple.dock wvous-bl-modifier -int 0
 # Reset: defaults delete com.apple.dock wvous-bl-corner; defaults delete com.apple.dock wvous-bl-modifier
 
-# ###############################################################################
-# # Safari & WebKit                                                             #
-# ###############################################################################
+###############################################################################
+# Safari & WebKit                                                             #
+###############################################################################
 
-# # Set Safari’s home page to `about:blank` for faster loading
-# defaults write com.apple.Safari HomePage -string "about:blank"
+# Set Safari’s home page to `about:blank` for faster loading
+defaults write com.apple.Safari HomePage -string "about:blank"
 
-# # Prevent Safari from opening ‘safe’ files automatically after downloading
-# defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+# Prevent Safari from opening ‘safe’ files automatically after downloading
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+# Reset: defaults delete com.apple.Safari AutoOpenSafeDownloads
 
-# # Allow hitting the Backspace key to go to the previous page in history
+# Allow hitting the Backspace key to go to the previous page in history
+# Use CMD + LeftArrow, which is already available.
 # defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true
 
-# # Hide Safari’s bookmarks bar by default
-# defaults write com.apple.Safari ShowFavoritesBar -bool false
+# Hide Safari’s bookmarks bar by default
+defaults write com.apple.Safari ShowFavoritesBar -bool false
+# Reset: defaults delete com.apple.Safari ShowFavoritesBar
 
-# # Hide Safari’s sidebar in Top Sites
-# defaults write com.apple.Safari ShowSidebarInTopSites -bool false
+# Hide Safari’s sidebar in Top Sites
+defaults write com.apple.Safari ShowSidebarInTopSites -bool false
+# Reset: defaults delete com.apple.Safari ShowSidebarInTopSites
 
-# # Disable Safari’s thumbnail cache for History and Top Sites
-# defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+# Disable Safari’s thumbnail cache for History and Top Sites
+defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+# Reset: defaults delete com.apple.Safari DebugSnapshotsUpdatePolicy
 
-# # Enable Safari’s debug menu
-# defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+# Enable Safari’s debug menu
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+# Reset: defaults delete com.apple.Safari IncludeInternalDebugMenu
 
-# # Make Safari’s search banners default to Contains instead of Starts With
-# defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
+# Make Safari’s search banners default to Contains instead of Starts With
+defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
+# Reset: defaults delete com.apple.Safari FindOnPageMatchesWordStartsOnly
 
-# # Remove useless icons from Safari’s bookmarks bar
+# Remove useless icons from Safari’s bookmarks bar
 # defaults write com.apple.Safari ProxiesInBookmarksBar "()"
+# Reset: defaults delete com.apple.Safari ProxiesInBookmarksBar
 
-# # Enable the Develop menu and the Web Inspector in Safari
-# defaults write com.apple.Safari IncludeDevelopMenu -bool true
-# defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-# defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+# Enable the Develop menu and the Web Inspector in Safari
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+# Reset:
+# defaults delete com.apple.Safari IncludeDevelopMenu
+# defaults delete com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey
+# defaults delete com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled
 
-# # Add a context menu item for showing the Web Inspector in web views
-# defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+# Add a context menu item for showing the Web Inspector in web views
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+# Reset: defaults delete NSGlobalDomain WebKitDeveloperExtras
 
 # ###############################################################################
 # # Mail                                                                        #
