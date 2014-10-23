@@ -625,30 +625,37 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 # Reset: defaults delete NSGlobalDomain WebKitDeveloperExtras
 
-# ###############################################################################
-# # Mail                                                                        #
-# ###############################################################################
+###############################################################################
+# Mail                                                                        #
+###############################################################################
 
-# # Disable send and reply animations in Mail.app
+# Disable send and reply animations in Mail.app
 # defaults write com.apple.mail DisableReplyAnimations -bool true
 # defaults write com.apple.mail DisableSendAnimations -bool true
+# Reset: defaults delete com.apple.mail DisableReplyAnimations; defaults delete com.apple.mail DisableSendAnimations
 
-# # Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
+
+# Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` in Mail.app
 # defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
+# Reset: defaults delete com.apple.mail AddressesIncludeNameOnPasteboard
 
-# # Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
-# defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"
+# Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"
+# Reset: defaults delete com.apple.mail NSUserKeyEquivalents
 
-# # Display emails in threaded mode, sorted by date (oldest at the top)
-# defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
-# defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
-# defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
+# Display emails in threaded mode, sorted by date (oldest at the top)
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
+defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
+# Reset: defaults delete com.apple.mail DraftsViewerAttributes
 
-# # Disable inline attachments (just show the icons)
+# Disable inline attachments (just show the icons)
 # defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
+# Reset: defaults delete com.apple.mail DisableInlineAttachmentViewing
 
-# # Disable automatic spell checking
+# Disable automatic spell checking
 # defaults write com.apple.mail SpellCheckingBehavior -string "NoSpellCheckingEnabled"
+# Reset: defaults delete com.apple.mail SpellCheckingBehavior
 
 # ###############################################################################
 # # Spotlight                                                                   #
