@@ -7,6 +7,11 @@ fresh freshshell/fresh-open bin/fresh-open --bin
 # Config
 fresh-options --file
   fresh config/\*
+
+  if [[ "$(uname)" == "Darwin" ]]; then
+    fresh osx/config/\*
+  fi
+
 fresh-options
 
 fresh nathanaelkane/dotfiles config/tmux/ctrlg.conf --file=~/.tmux.conf
