@@ -435,7 +435,8 @@ defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 # Reset: defaults delete com.apple.NetworkBrowser BrowseAllInterfaces
 
 # Enable the MacBook Air SuperDrive on any Mac
-# sudo nvram boot-args="mbasd=1"
+sudo nvram boot-args="mbasd=1"
+# Reset: sudo nvram -d boot-args
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
