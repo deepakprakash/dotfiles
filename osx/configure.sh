@@ -764,29 +764,35 @@ defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0
 # Reset: defaults delete com.apple.ActivityMonitor SortColumn; defaults delete com.apple.ActivityMonitor SortDirection
 
+###############################################################################
+# Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
+###############################################################################
 
-# ###############################################################################
-# # Address Book, Dashboard, iCal, TextEdit, and Disk Utility                   #
-# ###############################################################################
+# Enable the debug menu in Address Book
+defaults write com.apple.addressbook ABShowDebugMenu -bool true
+# Reset: defaults delete com.apple.addressbook ABShowDebugMenu
 
-# # Enable the debug menu in Address Book
-# defaults write com.apple.addressbook ABShowDebugMenu -bool true
-
-# # Enable Dashboard dev mode (allows keeping widgets on the desktop)
+# Enable Dashboard dev mode (allows keeping widgets on the desktop)
 # defaults write com.apple.dashboard devmode -bool true
+# Reset: defaults delete com.apple.dashboard devmode
 
-# # Enable the debug menu in iCal (pre-10.8)
+# Enable the debug menu in iCal (pre-10.8)
 # defaults write com.apple.iCal IncludeDebugMenu -bool true
+# Reset: defaults delete com.apple.iCal IncludeDebugMenu
 
-# # Use plain text mode for new TextEdit documents
-# defaults write com.apple.TextEdit RichText -int 0
-# # Open and save files as UTF-8 in TextEdit
-# defaults write com.apple.TextEdit PlainTextEncoding -int 4
-# defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+# Use plain text mode for new TextEdit documents
+defaults write com.apple.TextEdit RichText -int 0
+# Reset: defaults delete com.apple.TextEdit RichText
 
-# # Enable the debug menu in Disk Utility
-# defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
-# defaults write com.apple.DiskUtility advanced-image-options -bool true
+# Open and save files as UTF-8 in TextEdit
+defaults write com.apple.TextEdit PlainTextEncoding -int 4
+defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+# Reset: defaults delete com.apple.TextEdit PlainTextEncoding; defaults delete com.apple.TextEdit PlainTextEncodingForWrite
+
+# Enable the debug menu in Disk Utility
+defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
+defaults write com.apple.DiskUtility advanced-image-options -bool true
+# Reset: defaults delete com.apple.DiskUtility DUDebugMenuEnabled; defaults delete com.apple.DiskUtility advanced-image-options
 
 # ###############################################################################
 # # Mac App Store                                                               #
