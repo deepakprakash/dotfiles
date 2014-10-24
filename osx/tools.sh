@@ -30,6 +30,7 @@ webkit2png
 zopfli
 ffmpeg
 #  sshfs
+mackup
 )
 
 echo "Installing tools..."
