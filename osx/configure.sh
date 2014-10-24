@@ -842,30 +842,6 @@ defaults write com.google.Chrome.canary DisablePrintPreview -bool true
 # Reset: defaults delete com.google.Chrome DisablePrintPreview; defaults delete com.google.Chrome.canary DisablePrintPreview
 
 # ###############################################################################
-# # GPGMail 2                                                                   #
-# ###############################################################################
-
-# # Disable signing emails by default
-# defaults write ~/Library/Preferences/org.gpgtools.gpgmail SignNewEmailsByDefault -bool false
-
-# ###############################################################################
-# # SizeUp.app                                                                  #
-# ###############################################################################
-
-# # Start SizeUp at login
-# defaults write com.irradiatedsoftware.SizeUp StartAtLogin -bool true
-
-# # Don’t show the preferences window on next start
-# defaults write com.irradiatedsoftware.SizeUp ShowPrefsOnNextStart -bool false
-
-# ###############################################################################
-# # Sublime Text                                                                #
-# ###############################################################################
-
-# # Install Sublime Text settings
-# cp -r init/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
-
-# ###############################################################################
 # # Transmission.app                                                            #
 # ###############################################################################
 
