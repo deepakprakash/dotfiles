@@ -158,10 +158,6 @@ sudo systemsetup -setrestartfreeze on
 # SSD-specific tweaks                                                         #
 ###############################################################################
 
-# Disable local Time Machine snapshots
-sudo tmutil disablelocal
-# Reset: sudo tmutil enablelocal
-
 # Disable hibernation (speeds up entering sleep mode)
 sudo pmset -a hibernatemode 0
 # Reset: sudo pmset -a hibernatemode 3
@@ -734,15 +730,18 @@ defaults write com.apple.terminal StringEncodings -array 4
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 # Reset: defaults write com.googlecode.iterm2 PromptOnQuit -bool true
 
-# ###############################################################################
-# # Time Machine                                                                #
-# ###############################################################################
+###############################################################################
+# Time Machine                                                                #
+###############################################################################
 
-# # Prevent Time Machine from prompting to use new hard drives as backup volume
-# defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+# Prevent Time Machine from prompting to use new hard drives as backup volume
+defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+# Reset: defaults delete com.apple.TimeMachine DoNotOfferNewDisksForBackup
 
-# # Disable local Time Machine backups
+# Disable local Time Machine snapshots
 # hash tmutil &> /dev/null && sudo tmutil disablelocal
+sudo tmutil disablelocal
+# Reset: sudo tmutil enablelocal
 
 # ###############################################################################
 # # Activity Monitor                                                            #
