@@ -317,6 +317,7 @@ defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 # defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true  # Default on Yosemite; `false` to hide
 
 # Finder: show hidden files by default
+# Beware that this will make .DS_Store show up everywhere including the desktop and can be irritating
 defaults write com.apple.finder AppleShowAllFiles -bool true
 # Reset: defaults delete com.apple.finder AppleShowAllFiles
 
