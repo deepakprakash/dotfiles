@@ -822,21 +822,24 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 # Reset: defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool true
 
-# ###############################################################################
-# # Google Chrome & Google Chrome Canary                                        #
-# ###############################################################################
+###############################################################################
+# Google Chrome & Google Chrome Canary                                        #
+###############################################################################
 
-# # Allow installing user scripts via GitHub Gist or Userscripts.org
-# defaults write com.google.Chrome ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
-# defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
+# Allow installing user scripts via GitHub Gist or Userscripts.org
+defaults write com.google.Chrome ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
+defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
+# Reset: defaults delete com.google.Chrome ExtensionInstallSources; defaults delete com.google.Chrome.canary ExtensionInstallSources
 
-# # Disable the all too sensitive backswipe
-# defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
-# defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
+# Disable the all too sensitive backswipe
+defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
+# Reset: defaults delete com.google.Chrome AppleEnableSwipeNavigateWithScrolls; defaults delete com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls
 
-# # Use the system-native print preview dialog
-# defaults write com.google.Chrome DisablePrintPreview -bool true
-# defaults write com.google.Chrome.canary DisablePrintPreview -bool true
+# Use the system-native print preview dialog
+defaults write com.google.Chrome DisablePrintPreview -bool true
+defaults write com.google.Chrome.canary DisablePrintPreview -bool true
+# Reset: defaults delete com.google.Chrome DisablePrintPreview; defaults delete com.google.Chrome.canary DisablePrintPreview
 
 # ###############################################################################
 # # GPGMail 2                                                                   #
