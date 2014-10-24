@@ -794,15 +794,17 @@ defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
 defaults write com.apple.DiskUtility advanced-image-options -bool true
 # Reset: defaults delete com.apple.DiskUtility DUDebugMenuEnabled; defaults delete com.apple.DiskUtility advanced-image-options
 
-# ###############################################################################
-# # Mac App Store                                                               #
-# ###############################################################################
+###############################################################################
+# Mac App Store                                                               #
+###############################################################################
 
-# # Enable the WebKit Developer Tools in the Mac App Store
-# defaults write com.apple.appstore WebKitDeveloperExtras -bool true
+# Enable the WebKit Developer Tools in the Mac App Store
+defaults write com.apple.appstore WebKitDeveloperExtras -bool true
+# Reset: defaults delete com.apple.appstore WebKitDeveloperExtras
 
-# # Enable Debug Menu in the Mac App Store
-# defaults write com.apple.appstore ShowDebugMenu -bool true
+# Enable Debug Menu in the Mac App Store
+defaults write com.apple.appstore ShowDebugMenu -bool true
+# Reset: defaults delete com.apple.appstore ShowDebugMenu
 
 # ###############################################################################
 # # Messages                                                                    #
