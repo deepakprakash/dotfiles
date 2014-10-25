@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Install applications using `brew cask`
+# Install fonts using `brew cask`
 # Assumes that `brew cask` is installed and available.
 
 # Fonts
