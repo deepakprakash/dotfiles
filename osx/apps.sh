@@ -34,7 +34,7 @@ github
 qlcolorcode
 qlmarkdown
 qlprettypatch
-qlstephen
+# qlstephen  # Hangs up finder when browsing/quicklooking medium size files non-standard extensions. Tested in Yosemite.
 quicklook-json
 quicklook-csv
 betterzipql
