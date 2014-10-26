@@ -12,7 +12,10 @@ source-serif-pro
 open-sans
 open-sans-condensed
 
+pt-sans
+pt-serif
+pt-mono
 )
 
 echo "Installing Fonts..."
-brew cask install ${fonts[@]/#/font-}  # Prefix "font-" while iterating through array 
+brew cask install ${fonts[@]/#/font-}  # Prefix "font-" while iterating through array
