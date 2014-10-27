@@ -23,6 +23,7 @@ zsh
 wget
 ack
 trash
+go
 
 ## Utils
 graphicsmagick
