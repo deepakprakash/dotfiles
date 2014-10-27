@@ -30,7 +30,8 @@ graphicsmagick
 webkit2png
 zopfli
 ffmpeg
-#  sshfs
+# sshfs
+# osxfuse
 mackup
 )
 
