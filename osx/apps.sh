@@ -43,6 +43,8 @@ suspicious-package
 
 ## Others
 handbrake
+imageoptim
+imagealpha
 
 ## Unused
 #  alfred
