@@ -517,11 +517,11 @@ defaults write com.apple.dock autohide -bool true
 # Reset: defaults delete com.apple.dock autohide
 
 # Remove the auto-hiding Dock delay
-# defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock autohide-delay -float 0.2
 # Reset: defaults delete com.apple.dock autohide-delay
 
 # Reduce the animation delay when hiding/showing the Dock; To remove animation, set as 0
-defaults write com.apple.dock autohide-time-modifier -float 0.5
+defaults write com.apple.dock autohide-time-modifier -float 0.2
 # Reset: defaults delete com.apple.dock autohide-time-modifier
 
 # Make Dock icons of hidden applications translucent
