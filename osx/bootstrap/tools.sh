@@ -13,7 +13,6 @@ homebrew/dupes/grep
 
 ## Essentials
 bash
-rename
 python
 node
 tree
@@ -24,6 +23,9 @@ wget
 ack
 trash
 go
+httpie
+curl
+rsync
 
 ## Utils
 graphicsmagick
@@ -33,6 +35,7 @@ ffmpeg
 # sshfs
 # osxfuse
 mackup
+rename
 )
 
 echo "Installing tools..."
