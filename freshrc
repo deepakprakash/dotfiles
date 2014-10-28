@@ -83,6 +83,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   fresh robbyrussell/oh-my-zsh plugins/brew/_brew --file=completion/_brew
 
   fresh osx/functions/\*
+  fresh osx/exports.sh
 fi
 
 
