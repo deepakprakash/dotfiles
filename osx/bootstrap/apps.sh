@@ -14,6 +14,7 @@ firefox
 skype
 vlc
 utorrent
+the-unarchiver
 
 ## Utils
 caffeine
@@ -22,6 +23,7 @@ little-snitch
 spectacle
 day-o
 disk-inventory-x
+teamviewer
 
 ## Developer
 iterm2
