@@ -18,6 +18,7 @@ node
 tree
 hub
 git
+hg
 zsh
 wget
 ack
