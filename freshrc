@@ -84,6 +84,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
 
   fresh osx/functions/\*
   fresh osx/exports.sh
+  fresh osx/aliases.sh
 fi
 
 
