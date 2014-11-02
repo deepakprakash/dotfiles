@@ -15,6 +15,7 @@ skype
 vlc
 utorrent
 the-unarchiver
+clipmenu
 
 ## Utils
 caffeine
