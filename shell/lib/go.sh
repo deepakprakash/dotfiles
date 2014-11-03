@@ -1,10 +1,11 @@
 ## Helper functions for `golang`
+## Assumes that the `path_remove` and `path_append` functions from dotfiles/shell/functions/path.sh are available
 
-# Reset
+# Reset the changes by gowork()
 goquit () {
     if [ ! -z "$GOPATH" ]; then
-        path_remove "$GOPATH/bin"
-        unset GOPATH
+        path_remove "$GOPATH/bin" # Remove from path
+        unset GOPATH # Remove the GOPATH env
     fi
 }
 
@@ -25,7 +26,7 @@ gowork () {
         return 1
     fi
 
-    goquit  # Remove existing
+    goquit # Remove existing to avoid adding to PATH again and again.
 
     export GOPATH="$gpath"
     path_append "$GOPATH/bin"
