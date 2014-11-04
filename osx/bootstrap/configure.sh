@@ -508,8 +508,7 @@ defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 # Reset: defaults delete com.apple.dock dashboard-in-overlay
 
 # Don’t automatically rearrange Spaces based on most recent use
-# Already default in Yosemite
-# defaults write com.apple.dock mru-spaces -bool false
+defaults write com.apple.dock mru-spaces -bool false
 # Reset: defaults delete com.apple.dock mru-spaces
 
 # Automatically hide and show the Dock
