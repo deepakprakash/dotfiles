@@ -32,6 +32,7 @@ sublime-text3
 vagrant
 virtualbox
 github
+mysqlworkbench # Only if you are using MySQL
 
 ## Quicklook Extensions
 qlcolorcode
