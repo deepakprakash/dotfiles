@@ -37,6 +37,7 @@ ffmpeg
 # osxfuse
 mackup
 rename
+https://github.com/soimort/translate-shell
 )
 
 echo "Installing tools..."
