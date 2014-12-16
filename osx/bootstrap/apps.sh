@@ -18,7 +18,6 @@ the-unarchiver
 clipmenu
 
 ## Utils
-caffeine
 appcleaner
 little-snitch
 spectacle
@@ -51,6 +50,7 @@ imageoptim
 imagealpha
 
 ## Unused
+#  caffeine
 #  alfred
 #  screenflick
 #  transmit
