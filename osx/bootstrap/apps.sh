@@ -42,7 +42,7 @@ qlprettypatch
 quicklook-json
 quicklook-csv
 betterzipql
-webp-quicklook
+webpquicklook
 suspicious-package
 
 ## Others
