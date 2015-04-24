@@ -27,6 +27,7 @@ go
 httpie
 curl
 rsync
+ssh-copy-id
 
 ## Utils
 graphicsmagick
