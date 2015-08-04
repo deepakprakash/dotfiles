@@ -14,15 +14,15 @@ list () {
         local ls_path="$(which ls)"
         if [ "$ls_path" = "/bin/ls" ]; then
             # Native `ls`
-            ls $common_args -G "$@"
+            command ls $common_args -G "$@"
         else
             # GNU `ls` from homebrew
-            ls $common_args --color=auto "$@"
+            command ls $common_args --color=auto "$@"
         fi
         ;;
 
       linux*)
-        ls $common_args --color=auto "$@"
+        command ls $common_args --color=auto "$@"
     esac
 }
 
