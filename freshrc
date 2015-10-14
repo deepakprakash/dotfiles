@@ -35,6 +35,9 @@ fresh-options --file=~/.zshrc --marker
   fresh bjeanes/dot-files shells/zsh/lib/completion-waiting-dots.zsh
 
   fresh robbyrussell/oh-my-zsh plugins/golang/golang.plugin.zsh
+  fresh robbyrussell/oh-my-zsh plugins/django/django.plugin.zsh  
+
+  fresh robbyrussell/oh-my-zsh plugins/httpie/httpie.plugin.zsh
 
   # de-duplicate PATH
   fresh akatov/dotfiles zshrc/dedup-path --ref=55e80fe
