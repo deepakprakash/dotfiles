@@ -47,6 +47,14 @@ bindkey -M vicmd 'q' push-line
 # bindkey '\e[3~' delete-char
 
 # ************************************************************************
+# BASED ON https://bbs.archlinux.org/viewtopic.php?id=149977
+# Load the required extensions for the history search
+autoload up-line-or-beginning-search
+autoload down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+# ************************************************************************
 # BASED ON http://zshwiki.org/home/zle/bindkeys
 # This seems to be the only way to get up/down keys working reliably on
 # osx as well as Ubuntu. Uncomment the req keys if you plan on using them.
@@ -64,11 +72,11 @@ key[Delete]=${terminfo[kdch1]}
 # key[PageDown]=${terminfo[knp]}
 
 # setup key accordingly
-# start typing + [Up-Arrow] - fuzzy find history forward
-[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-search # history-beginning-search-backward
+# start typing + [Up-Arrow] - find history forward and match upto typed chars
+[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-beginning-search # history-beginning-search-backward
 
-# start typing + [Down-Arrow] - fuzzy find history backward
-[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-search # history-beginning-search-forward
+# start typing + [Down-Arrow] - find history backward and match upto typed chars
+[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-beginning-search # history-beginning-search-forward
 
 # make the delete key (or Fn + Delete on the Mac) work instead of outputting a ~
 [[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
