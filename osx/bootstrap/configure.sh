@@ -159,11 +159,11 @@ sudo systemsetup -setrestartfreeze on
 ###############################################################################
 
 # Disable hibernation (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 0
+# sudo pmset -a hibernatemode 0
 # Reset: sudo pmset -a hibernatemode 3
 
 # Remove the sleep image file to save disk space
-sudo rm /Private/var/vm/sleepimage
+# sudo rm /Private/var/vm/sleepimage
 
 # Create a zero-byte file instead…
 # [I don't see the file being created again. Hence below is commented out]
