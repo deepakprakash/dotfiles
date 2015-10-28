@@ -8,7 +8,6 @@ apps=(
 
 ## Essentials
 dropbox
-evernote
 google-chrome
 firefox
 skype
