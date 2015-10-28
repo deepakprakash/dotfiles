@@ -1,4 +1,3 @@
-alias history="fc -l 1"
 alias w="which"
 
 alias internet\?="ping 8.8.8.8"
