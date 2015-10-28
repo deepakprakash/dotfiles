@@ -47,6 +47,7 @@ tools=(
 "rsync"
 
 ## Utils
+"terminal-notifier"
 "graphicsmagick"
 "webkit2png"
 "zopfli"
