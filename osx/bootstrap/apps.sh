@@ -12,14 +12,15 @@ google-chrome
 firefox
 skype
 vlc
-utorrent
 the-unarchiver
 clipmenu
+transmission
+flux
+microsoft-office365
 
 ## Utils
 appcleaner
 little-snitch
-spectacle
 day-o
 disk-inventory-x
 teamviewer
@@ -29,7 +30,10 @@ iterm2
 sublime-text3
 vagrant
 virtualbox
-github
+github-desktop
+
+## Photography
+adobe-creative-cloud
 
 ## Quicklook Extensions
 qlcolorcode
@@ -48,21 +52,19 @@ imageoptim
 imagealpha
 
 ## Unused
+#  spectacle
 #  caffeine
 #  alfred
 #  screenflick
-#  transmit
 #  spotify
 #  arq
 #  flash
 #  atom
-#  flux
 #  mailbox
 #  sketch
 #  tower
 #  cloudup
 #  nvalt
-#  transmission
 )
 
 # Install apps to /Applications
