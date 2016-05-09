@@ -1,4 +1,4 @@
-source ~/.fresh/build/vendor/zsh-syntax-highlighting.zsh
+source ~/.fresh/build/vendor/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 ZSH_HIGHLIGHT_STYLES+=(

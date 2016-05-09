@@ -1,9 +1,9 @@
 # vim: set ft=sh:
-
+ 
 fresh freshshell/fresh bin/fresh --bin
 fresh freshshell/fresh contrib/completion/fresh-completion.zsh --file=completion/_fresh
 fresh freshshell/fresh-open bin/fresh-open --bin
-
+ 
 # Config
 fresh-options --file
   fresh config/\*
@@ -35,7 +35,7 @@ fresh-options --file=~/.zshrc --marker
   fresh bjeanes/dot-files shells/zsh/lib/completion-waiting-dots.zsh
 
   fresh robbyrussell/oh-my-zsh plugins/golang/golang.plugin.zsh
-  fresh robbyrussell/oh-my-zsh plugins/django/django.plugin.zsh  
+  fresh robbyrussell/oh-my-zsh plugins/django/django.plugin.zsh
 
   fresh robbyrussell/oh-my-zsh plugins/httpie/httpie.plugin.zsh
 
@@ -44,12 +44,7 @@ fresh-options --file=~/.zshrc --marker
 fresh-options
 
 fresh zsh-users/zsh-completions src/_ack --file=completion/_ack
-
-fresh zsh-users/zsh-syntax-highlighting zsh-syntax-highlighting.zsh --file=vendor/zsh-syntax-highlighting.zsh
-fresh zsh-users/zsh-syntax-highlighting highlighters/main/main-highlighter.zsh --file=vendor/highlighters/main/main-highlighter.zsh
-fresh zsh-users/zsh-syntax-highlighting highlighters/brackets/brackets-highlighter.zsh --file=vendor/highlighters/brackets/brackets-highlighter.zsh
-fresh shell/zsh/zsh-syntax-highlighting.zsh --file=~/.zshrc
-
+# fresh Valodim/zsh-curl-completion _curl --file=completion/_curl
 
 # Shell
 fresh shell/functions/\*
@@ -68,6 +63,15 @@ if [[ "$(uname)" == "Darwin" ]]; then
   fresh osx/aliases.sh
 fi
 
+# ZSH Syntax Highlighting. Note that this needs to be as much at the end as possible.
+fresh zsh-users/zsh-syntax-highlighting zsh-syntax-highlighting.zsh --file=vendor/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fresh zsh-users/zsh-syntax-highlighting .version --file=vendor/zsh-syntax-highlighting/.version  # Required since the plugin needs it internally
+fresh zsh-users/zsh-syntax-highlighting .revision-hash --file=vendor/zsh-syntax-highlighting/.revision-hash  # Required since the plugin needs it internally
+
+# Plugins for syntax highlighting
+fresh zsh-users/zsh-syntax-highlighting highlighters/main/main-highlighter.zsh --file=vendor/zsh-syntax-highlighting/highlighters/main/main-highlighter.zsh
+fresh zsh-users/zsh-syntax-highlighting highlighters/brackets/brackets-highlighter.zsh --file=vendor/zsh-syntax-highlighting/highlighters/brackets/brackets-highlighter.zsh
+fresh shell/zsh/zsh-syntax-highlighting.zsh --file=~/.zshrc
 
 # Backup
 fresh deepakprakash/backup bin/backup.sh --bin=~/bin/backup
