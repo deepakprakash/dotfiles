@@ -46,6 +46,8 @@ tools=(
 "curl"
 "rsync"
 
+"iproute2mac"
+
 ## Utils
 "terminal-notifier"
 "graphicsmagick"

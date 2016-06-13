@@ -2,7 +2,6 @@ alias w="which"
 
 alias internet\?="ping 8.8.8.8"
 alias serve="python -m SimpleHTTPServer"
-alias ip='curl curlmyip.com'
 
 # cat with highlight
 alias cah="pygmentize -g"

@@ -1,9 +1,9 @@
 # vim: set ft=sh:
- 
+
 fresh freshshell/fresh bin/fresh --bin
 fresh freshshell/fresh contrib/completion/fresh-completion.zsh --file=completion/_fresh
 fresh freshshell/fresh-open bin/fresh-open --bin
- 
+
 # Config
 fresh-options --file
   fresh config/\*
@@ -84,6 +84,10 @@ install_backup_trigger () {
 # Utils
 fresh sivel/speedtest-cli speedtest_cli.py --bin=~/bin/speedtest
 
+fresh-options --bin
+  fresh bin/externalip
+  fresh bin/internalip
+fresh-options
 
 fresh_after_build() {
 
