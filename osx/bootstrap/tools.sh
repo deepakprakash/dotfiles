@@ -56,6 +56,7 @@ tools=(
 "ffmpeg"
 "mackup"
 "rename"
+"htop-osx"
 # https://github.com/soimort/translate-shell
 )
 
