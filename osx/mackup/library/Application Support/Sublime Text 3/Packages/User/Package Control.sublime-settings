@@ -1,0 +1,19 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Apache Pig",
+		"Boxy Theme",
+		"Djaneiro",
+		"GitGutter",
+		"Monokai Neue",
+		"Package Control",
+		"SideBarEnhancements",
+		"SublimeCodeIntel",
+		"SublimeLinter",
+		"SublimeLinter-pep8"
+	]
+}
