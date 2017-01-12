@@ -1,0 +1,33 @@
+s = {
+	id = "31521916-8D5A-4823-9F21-7741873F1441",
+	internalName = "Untitled Preset",
+	title = "Untitled Preset",
+	type = "WatermarkingPreset",
+	value = {
+		items = {
+			{
+				anchor = "topright",
+				horizontalPadding = 0.0032444267515924,
+				kind = "text",
+				opacity = 1,
+				orientation = "AB",
+				sizeKind = "relative",
+				sizeRelativeAmount = 0.047775705645161,
+				text = "© Deepak Prakash",
+				textColorBlue = 1,
+				textColorGreen = 1,
+				textColorRed = 1,
+				textFontName = "MyriadWebPro",
+				textHorizontalAlignment = "left",
+				textShadowAngle = 270,
+				textShadowEnabled = true,
+				textShadowOffset = 0.1,
+				textShadowOpacity = 0.8,
+				textShadowRadius = 0.2,
+				textVerticalAlignment = "top",
+				verticalPadding = 0.0032444267515924,
+			},
+		},
+	},
+	version = 0,
+}

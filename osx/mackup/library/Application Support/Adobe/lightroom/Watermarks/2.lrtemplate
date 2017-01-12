@@ -1,0 +1,33 @@
+s = {
+	id = "E7FA93D5-CFAA-4B3F-A74F-1D70FC3B686F",
+	internalName = "2",
+	title = "2",
+	type = "WatermarkingPreset",
+	value = {
+		items = {
+			{
+				anchor = "topright",
+				horizontalPadding = 0.0032444267515924,
+				kind = "text",
+				opacity = 0.6359474522293,
+				orientation = "AB",
+				sizeKind = "relative",
+				sizeRelativeAmount = 0.047775705645161,
+				text = "© Deepak Prakash",
+				textColorBlue = 0.87038352272727,
+				textColorGreen = 0.87038352272727,
+				textColorRed = 0.87038352272727,
+				textFontName = "MyriadWebPro",
+				textHorizontalAlignment = "left",
+				textShadowAngle = 270,
+				textShadowEnabled = false,
+				textShadowOffset = 0.1,
+				textShadowOpacity = 0.40266719745223,
+				textShadowRadius = 0.2,
+				textVerticalAlignment = "top",
+				verticalPadding = 0.0032444267515924,
+			},
+		},
+	},
+	version = 0,
+}
