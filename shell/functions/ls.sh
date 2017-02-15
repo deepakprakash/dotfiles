@@ -1,4 +1,10 @@
-# Functions and aliases for a consistent and clean `ls`.
+# Functions and aliases for a consistent and clean `ls` across platforms.
+
+# This needs to be here at the global level and NOT inside the `list()` since we
+# alias ls later to list(). So if we call this inside list(), we wont get the
+# correct one after the first time. Also helps with performance since we dont
+# do this costly operation everytime list() is called.
+local ls_path="$(which ls)"
 
 list () {
     # ls with:
@@ -11,7 +17,6 @@ list () {
         # The native OSX `ls` does not support `--color` argument - hence need
         # to check if the current `ls` is native or the GNU one from homebrew's
         # coreutils
-        local ls_path="$(which ls)"
         if [ "$ls_path" = "/bin/ls" ]; then
             # Native `ls`
             command ls $common_args -G "$@"
@@ -26,11 +31,15 @@ list () {
     esac
 }
 
-# An alias for `ls` to `list` seems cleaner than directly having a function
-# called `ls`, since we can always access the raw `ls` if required, by doing
-# `unalias ls`. There also seems to be some weird issues if an `ls` function
-# is created and directly used.
-alias ls="list"
+# Started out / used making `ls` itself aliased to `list`. But this it a bit
+# dirty and causes issues at times, while the only advantage is that when using
+# the `ls` command directly, the colors and common args in `list()` are taken
+# care of. These tradeoffs dont seem worth it and hence just start off with the
+# `ll` alias which is what I use 99.9% of the time.
+alias ll="list -Al"  # Show all except . and .. (-A); Detailed view(-l);
 
 # Convenience aliases
-alias l="ls -Al" # Show all except . and .. (-A); Detailed view(-l);
+alias llt="ll -t"  # ll sorted by last modified time
+alias lls="ll -S"  # ll sorted by size
+
+# alias l="ls -Al" # Show all except . and .. (-A); Detailed view(-l);
