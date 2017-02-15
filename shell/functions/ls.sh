@@ -41,5 +41,3 @@ alias ll="list -Al"  # Show all except . and .. (-A); Detailed view(-l);
 # Convenience aliases
 alias llt="ll -t"  # ll sorted by last modified time
 alias lls="ll -S"  # ll sorted by size
-
-# alias l="ls -Al" # Show all except . and .. (-A); Detailed view(-l);
