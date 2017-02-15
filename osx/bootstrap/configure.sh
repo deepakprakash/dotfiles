@@ -35,7 +35,6 @@ sudo nvram SystemAudioVolume=" "
 # Menu bar: hide the User and Clock(I use Day-O) icons
 for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
 	defaults write "${domain}" dontAutoLoad -array \
-		"/System/Library/CoreServices/Menu Extras/Clock.menu" \
 		"/System/Library/CoreServices/Menu Extras/User.menu"
 done
 
