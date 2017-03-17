@@ -7,7 +7,7 @@
 apps=(
 
 ## Essentials
-dropbox
+# dropbox
 google-chrome
 firefox
 skype
@@ -16,12 +16,11 @@ the-unarchiver
 clipmenu
 transmission
 flux
-microsoft-office365
+microsoft-office
 
 ## Utils
 appcleaner
 little-snitch
-day-o
 disk-inventory-x
 teamviewer
 
