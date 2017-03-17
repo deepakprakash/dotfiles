@@ -32,7 +32,7 @@ virtualbox
 github-desktop
 
 ## Photography
-adobe-creative-cloud
+# adobe-creative-cloud
 
 ## Quicklook Extensions
 qlcolorcode
