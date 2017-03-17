@@ -14,6 +14,7 @@ brew update
 brew tap homebrew/dupes
 
 echo "Install and setup brew cask..."
-brew install caskroom/cask/brew-cask
+brew cask
 brew tap caskroom/versions
 brew tap caskroom/fonts
+
