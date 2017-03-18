@@ -55,9 +55,6 @@ fresh shell/local.sh
 
 if [[ "$(uname)" == "Darwin" ]]; then
   # OSX Specific shell functionality
-  fresh robbyrussell/oh-my-zsh plugins/brew/brew.plugin.zsh --file=completion/_brew
-  fresh robbyrussell/oh-my-zsh plugins/brew-cask/brew-cask.plugin.zsh --file=completion/_brew
-
   fresh osx/functions/\*
   fresh osx/exports.sh
   fresh osx/aliases.sh
