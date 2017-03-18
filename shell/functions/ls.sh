@@ -1,11 +1,5 @@
 # Functions and aliases for a consistent and clean `ls` across platforms.
 
-# This needs to be here at the global level and NOT inside the `list()` since we
-# alias ls later to list(). So if we call this inside list(), we wont get the
-# correct one after the first time. Also helps with performance since we dont
-# do this costly operation everytime list() is called.
-local ls_path="$(which ls)"
-
 list () {
     # ls with:
     #  > colored output (`-G` argument for native OSX `ls`; else `--color=auto`)
@@ -17,16 +11,23 @@ list () {
         # The native OSX `ls` does not support `--color` argument - hence need
         # to check if the current `ls` is native or the GNU one from homebrew's
         # coreutils
-        if [ "$ls_path" = "/bin/ls" ]; then
-            # Native `ls`
+
+        # The variable GNU_COREUTILS_PATH is exported with a valid path on zsh start
+        # if the gnucoreutils are installed. Refer: shell/exports.sh
+        # So it suffices to check if that variable is defined and valid.
+
+        if [ -z "$GNU_COREUTILS_PATH" ]; then
+            # $GNU_COREUTILS_PATH is empty or undefined.
+            # So native `ls`
             command ls $common_args -G "$@"
         else
+            # $GNU_COREUTILS_PATH is a non-empty value.
             # GNU `ls` from homebrew
             command ls $common_args --color=auto "$@"
         fi
         ;;
 
-      linux*)
+      *)
         command ls $common_args --color=auto "$@"
     esac
 }
