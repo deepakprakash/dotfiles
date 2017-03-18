@@ -10,10 +10,10 @@ path_prepend "$HOME/bin"
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
 	# Get the prefix from brew. By redirecting the stderr of the
-	# command to /dev/null, the output if brew itself is not installed
-	# or in case of some other error, there will be no echo to terminal.
+	# command to /dev/null, we avoid the error output to terminal if brew itself
+	# is not installed or in case of some other error.
 	# If brew is installed but coreutils is not installed, it will return
-	# a path, but it doesnt exist and hence will be taken care of by the
+	# a path, but its a non-existant path and hence will be taken care of by the
 	# subsequent if condition.
     coreutils_prefix="$(brew --prefix coreutils 2>/dev/null)"
 
