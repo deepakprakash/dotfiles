@@ -7,7 +7,6 @@
 apps=(
 
 ## Essentials
-# dropbox
 google-chrome
 firefox
 skype
@@ -26,7 +25,7 @@ teamviewer
 
 ## Developer
 iterm2
-sublime-text3
+sublime-text
 vagrant
 virtualbox
 github-desktop
@@ -38,7 +37,6 @@ github-desktop
 qlcolorcode
 qlmarkdown
 qlprettypatch
-# qlstephen  # Hangs up finder when browsing/quicklooking medium size files non-standard extensions. Tested in Yosemite.
 quicklook-json
 quicklook-csv
 betterzipql
