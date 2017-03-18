@@ -21,7 +21,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Set standby delay to 2 hours (default is 1 hour)
 # Speeds up wake from sleep. Ref: http://osxdaily.com/2013/01/21/mac-slow-wake-from-sleep-fix/
-sudo pmset -a standbydelay 7200
+sudo pmset -a standbydelay 16800
 # Reset: sudo pmset -a standbydelay 4200
 
 # Disable the sound effects on boot
@@ -32,11 +32,11 @@ sudo nvram SystemAudioVolume=" "
 # Disable transparency in the menu bar and elsewhere on Yosemite
 # defaults write com.apple.universalaccess reduceTransparency -bool true
 
-# Menu bar: hide the User and Clock(I use Day-O) icons
-for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-	defaults write "${domain}" dontAutoLoad -array \
-		"/System/Library/CoreServices/Menu Extras/User.menu"
-done
+# Menu bar: hide the User icon
+# for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
+# 	defaults write "${domain}" dontAutoLoad -array \
+# 		"/System/Library/CoreServices/Menu Extras/User.menu"
+# done
 
 # Menu bar: Show the Bluetooth, Airport, Volume and Battery icons
 defaults write com.apple.systemuiserver menuExtras -array \
@@ -80,7 +80,7 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 # Reset: defaults delete NSGlobalDomain PMPrintingExpandedStateForPrint && defaults delete NSGlobalDomain PMPrintingExpandedStateForPrint2
 
 # Save to disk (not to iCloud) by default
-defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+# defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # Reset: defaults delete NSGlobalDomain NSDocumentSaveNewDocumentsToCloud
 
 # Automatically quit printer app once the print jobs complete
@@ -203,7 +203,7 @@ defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryCli
 # Reset: defaults delete NSGlobalDomain com.apple.swipescrolldirection
 
 # Increase sound quality for Bluetooth headphones/headsets
-defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+# defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 # Reset: defaults delete com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)"
 
 # Enable full keyboard access for all controls
@@ -301,7 +301,7 @@ defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 # Reset: defaults delete com.apple.finder NewWindowTargetPath
 
 # Show icons for hard drives, servers, and removable media on the desktop
-# defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true  # Default on Yosemite; `false` to hide
+# defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true  # Default on Sierra; `false` to hide
 
 # defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
 # Reset: defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
@@ -309,7 +309,7 @@ defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 # Reset: defaults delete com.apple.finder ShowMountedServersOnDesktop
 
-# defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true  # Default on Yosemite; `false` to hide
+# defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true  # Default on Sierra; `false` to hide
 
 # Finder: show hidden files by default
 # Beware that this will make .DS_Store show up everywhere including the desktop and can be irritating
@@ -344,7 +344,7 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Enable spring loading for directories (open up directories when you drag files onto them)
 # This is enabled by default. `false` to turn off.
-defaults write NSGlobalDomain com.apple.springing.enabled -bool true
+# defaults write NSGlobalDomain com.apple.springing.enabled -bool true
 
 # Reduce the spring loading delay for directories. `0` for no delay.
 defaults write NSGlobalDomain com.apple.springing.delay -float 0.2
@@ -429,8 +429,9 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 # Reset: defaults delete com.apple.NetworkBrowser BrowseAllInterfaces
 
-# Enable the MacBook Air SuperDrive on any Mac
-sudo nvram boot-args="mbasd=1"
+# Enable the MacBook Air SuperDrive on any Mac; doesnt work from Sierra unless you are
+# booted into recovery partition; No idea what it does either.
+# sudo nvram boot-args="mbasd=1"
 # Reset: sudo nvram -d boot-args
 
 # Show the ~/Library folder
@@ -507,23 +508,23 @@ defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 # Reset: defaults delete com.apple.dock dashboard-in-overlay
 
 # Don’t automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool false
+# defaults write com.apple.dock mru-spaces -bool false
 # Reset: defaults delete com.apple.dock mru-spaces
 
 # Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool true
+# defaults write com.apple.dock autohide -bool true
 # Reset: defaults delete com.apple.dock autohide
 
 # Remove the auto-hiding Dock delay
-defaults write com.apple.dock autohide-delay -float 0.2
+# defaults write com.apple.dock autohide-delay -float 0.2
 # Reset: defaults delete com.apple.dock autohide-delay
 
 # Reduce the animation delay when hiding/showing the Dock; To remove animation, set as 0
-defaults write com.apple.dock autohide-time-modifier -float 0.2
+# defaults write com.apple.dock autohide-time-modifier -float 0.2
 # Reset: defaults delete com.apple.dock autohide-time-modifier
 
 # Make Dock icons of hidden applications translucent
-defaults write com.apple.dock showhidden -bool true
+# defaults write com.apple.dock showhidden -bool true
 # Reset: defaults delete com.apple.dock showhidden
 
 # Disable the Launchpad gesture (pinch with thumb and three fingers)
@@ -636,13 +637,13 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 # Reset: defaults delete com.apple.mail AddressesIncludeNameOnPasteboard
 
 # Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
-defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"
+# defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" -string "@\\U21a9"
 # Reset: defaults delete com.apple.mail NSUserKeyEquivalents
 
 # Display emails in threaded mode, sorted by date (oldest at the top)
-defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
-defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
-defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
+# defaults write com.apple.mail DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -string "yes"
+# defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortedDescending" -string "yes"
+# defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
 # Reset: defaults delete com.apple.mail DraftsViewerAttributes
 
 # Disable inline attachments (just show the icons)
@@ -665,37 +666,37 @@ defaults write com.apple.mail DraftsViewerAttributes -dict-add "SortOrder" -stri
 # Disable Spotlight indexing for any volume that gets mounted and has not yet
 # been indexed before.
 # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing a specific volume.
-sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
+# sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
 # Reset: sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array
 
 # Change indexing order and disable some file types
-defaults write com.apple.spotlight orderedItems -array \
-	'{"enabled" = 1;"name" = "APPLICATIONS";}' \
-	'{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
-	'{"enabled" = 1;"name" = "DIRECTORIES";}' \
-	'{"enabled" = 1;"name" = "PDF";}' \
-	'{"enabled" = 1;"name" = "FONTS";}' \
-	'{"enabled" = 1;"name" = "DOCUMENTS";}' \
-	'{"enabled" = 0;"name" = "MESSAGES";}' \
-	'{"enabled" = 1;"name" = "CONTACT";}' \
-	'{"enabled" = 1;"name" = "EVENT_TODO";}' \
-	'{"enabled" = 1;"name" = "IMAGES";}' \
-	'{"enabled" = 0;"name" = "BOOKMARKS";}' \
-	'{"enabled" = 0;"name" = "MUSIC";}' \
-	'{"enabled" = 0;"name" = "MOVIES";}' \
-	'{"enabled" = 0;"name" = "PRESENTATIONS";}' \
-	'{"enabled" = 0;"name" = "SPREADSHEETS";}' \
-	'{"enabled" = 0;"name" = "SOURCE";}'
+# defaults write com.apple.spotlight orderedItems -array \
+# 	'{"enabled" = 1;"name" = "APPLICATIONS";}' \
+# 	'{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
+# 	'{"enabled" = 1;"name" = "DIRECTORIES";}' \
+# 	'{"enabled" = 1;"name" = "PDF";}' \
+# 	'{"enabled" = 1;"name" = "FONTS";}' \
+# 	'{"enabled" = 1;"name" = "DOCUMENTS";}' \
+# 	'{"enabled" = 0;"name" = "MESSAGES";}' \
+# 	'{"enabled" = 1;"name" = "CONTACT";}' \
+# 	'{"enabled" = 1;"name" = "EVENT_TODO";}' \
+# 	'{"enabled" = 1;"name" = "IMAGES";}' \
+# 	'{"enabled" = 0;"name" = "BOOKMARKS";}' \
+# 	'{"enabled" = 0;"name" = "MUSIC";}' \
+# 	'{"enabled" = 0;"name" = "MOVIES";}' \
+# 	'{"enabled" = 0;"name" = "PRESENTATIONS";}' \
+# 	'{"enabled" = 0;"name" = "SPREADSHEETS";}' \
+# 	'{"enabled" = 0;"name" = "SOURCE";}'
 # Reset: defaults delete com.apple.spotlight orderedItems
 
 # Load new settings before rebuilding the index
-killall mds > /dev/null 2>&1
+# killall mds > /dev/null 2>&1
 
 # Make sure indexing is enabled for the main volume
-sudo mdutil -i on / > /dev/null
+# sudo mdutil -i on / > /dev/null
 
 # Rebuild the index from scratch
-sudo mdutil -E / > /dev/null
+# sudo mdutil -E / > /dev/null
 
 ###############################################################################
 # Terminal & iTerm 2                                                          #
@@ -733,7 +734,7 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 ###############################################################################
 
 # Prevent Time Machine from prompting to use new hard drives as backup volume
-defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+# defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # Reset: defaults delete com.apple.TimeMachine DoNotOfferNewDisksForBackup
 
 # Disable local Time Machine snapshots
@@ -779,12 +780,12 @@ defaults write com.apple.addressbook ABShowDebugMenu -bool true
 # Reset: defaults delete com.apple.iCal IncludeDebugMenu
 
 # Use plain text mode for new TextEdit documents
-defaults write com.apple.TextEdit RichText -int 0
+# defaults write com.apple.TextEdit RichText -int 0
 # Reset: defaults delete com.apple.TextEdit RichText
 
 # Open and save files as UTF-8 in TextEdit
-defaults write com.apple.TextEdit PlainTextEncoding -int 4
-defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+# defaults write com.apple.TextEdit PlainTextEncoding -int 4
+# defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 # Reset: defaults delete com.apple.TextEdit PlainTextEncoding; defaults delete com.apple.TextEdit PlainTextEncodingForWrite
 
 # Enable the debug menu in Disk Utility
@@ -797,11 +798,11 @@ defaults write com.apple.DiskUtility advanced-image-options -bool true
 ###############################################################################
 
 # Enable the WebKit Developer Tools in the Mac App Store
-defaults write com.apple.appstore WebKitDeveloperExtras -bool true
+# defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 # Reset: defaults delete com.apple.appstore WebKitDeveloperExtras
 
 # Enable Debug Menu in the Mac App Store
-defaults write com.apple.appstore ShowDebugMenu -bool true
+# defaults write com.apple.appstore ShowDebugMenu -bool true
 # Reset: defaults delete com.apple.appstore ShowDebugMenu
 
 ###############################################################################
@@ -825,8 +826,8 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 ###############################################################################
 
 # Allow installing user scripts via GitHub Gist or Userscripts.org
-defaults write com.google.Chrome ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
-defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
+# defaults write com.google.Chrome ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
+# defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://gist.githubusercontent.com/" "http://userscripts.org/*"
 # Reset: defaults delete com.google.Chrome ExtensionInstallSources; defaults delete com.google.Chrome.canary ExtensionInstallSources
 
 # Disable the all too sensitive backswipe
@@ -887,9 +888,9 @@ defaults write com.google.Chrome.canary DisablePrintPreview -bool true
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-	"Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer" \
-	"Terminal" "Transmission" "Twitter" "iCal"; do
-	killall "${app}" > /dev/null 2>&1
-done
+# for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
+# 	"Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer" \
+# 	"Terminal" "Transmission" "Twitter" "iCal"; do
+# 	killall "${app}" > /dev/null 2>&1
+# done
 echo "Done. Note that some of these changes require a logout/restart to take effect." 
