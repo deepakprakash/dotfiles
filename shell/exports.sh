@@ -5,17 +5,20 @@ path_prepend "/usr/local/bin"
 path_prepend "$HOME/bin"
 
 
-# local GNU_COREUTILS_PATH = "/usr/local/opt/coreutils/libexec/gnubin"
-# if [ -d "$GNU_COREUTILS_PATH" ]; then
-#   path_prepend "/usr/local/opt/coreutils/libexec/gnubin"
-# fi
+# If OSX and gnucoreutils from brew are installed, modify path so
+# that the the gnucoreutils get preference
+if [[ "$OSTYPE" == "darwin"* ]]; then
 
-
-# Setup OSX to use the brew coreutils
-# if which brew > /dev/null; then
-    # Brew is installed
+	# Get the prefix from brew. By redirecting the stderr of the
+	# command to /dev/null, the output if brew itself is not installed
+	# or in case of some other error, there will be no echo to terminal.
+	# If brew is installed but coreutils is not installed, it will return
+	# a path, but it doesnt exist and hence will be taken care of by the
+	# subsequent if condition.
     coreutils_prefix="$(brew --prefix coreutils 2>/dev/null)"
 
+    # We construct the full path to where the executables are installed
+    # with their native names and check if the directory exists.
     if [ -d "$coreutils_prefix/libexec/gnubin" ]; then
         # Prepend to path
         export GNU_COREUTILS_PATH="$coreutils_prefix/libexec/gnubin"
@@ -24,4 +27,4 @@ path_prepend "$HOME/bin"
         # Prepend to MANPATH for correct manpages
         export MANPATH="$coreutils_prefix/libexec/gnuman:$MANPATH"
     fi
-# fi
+fi
