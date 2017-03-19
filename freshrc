@@ -82,8 +82,7 @@ install_backup_trigger () {
 fresh sivel/speedtest-cli speedtest_cli.py --bin=~/bin/speedtest
 
 fresh-options --bin
-  fresh bin/externalip
-  fresh bin/internalip
+  fresh bin/\*
 fresh-options
 
 fresh_after_build() {
