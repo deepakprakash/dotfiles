@@ -43,7 +43,6 @@ fresh-options
 
 fresh zsh-users/zsh-completions src/_ack --file=completion/_ack
 fresh robbyrussell/oh-my-zsh plugins/pip/_pip --file=completion/_pip
-
 # fresh Valodim/zsh-curl-completion _curl --file=completion/_curl
 
 # Shell
