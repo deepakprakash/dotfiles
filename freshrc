@@ -22,7 +22,7 @@ fresh-options --file=~/.zshrc --marker
   fresh shell/zsh/prompt.zsh
   fresh shell/zsh/title.zsh
   fresh shell/zsh/functions.zsh
-  fresh shell/zsh/zshrc
+  fresh shell/zsh/zshrc.zsh
   fresh shell/zsh/keybindings.zsh
 
   # this loads the shell files and needs to be at the bottom of the zshrc for
