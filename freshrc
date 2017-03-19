@@ -14,8 +14,6 @@ fresh-options --file
 
 fresh-options
 
-fresh nathanaelkane/dotfiles config/tmux/ctrlg.conf --file=~/.tmux.conf
-
 # Zsh
 fresh-options --file=~/.zshrc --marker
   fresh shell/zsh/completion.zsh
@@ -29,9 +27,7 @@ fresh-options --file=~/.zshrc --marker
   # compdef be availiable
   fresh freshshell/fresh contrib/source-build.sh
 
-  fresh rupa/z z.sh
-  fresh robbyrussell/oh-my-zsh lib/edit-command-line.zsh --ref=a38774c
-  fresh robbyrussell/oh-my-zsh plugins/git-flow/git-flow.plugin.zsh --ref=df30eae
+  # fresh robbyrussell/oh-my-zsh lib/edit-command-line.zsh
   fresh bjeanes/dot-files shells/zsh/lib/completion-waiting-dots.zsh
 
   fresh robbyrussell/oh-my-zsh plugins/golang/golang.plugin.zsh
@@ -39,8 +35,10 @@ fresh-options --file=~/.zshrc --marker
 
   fresh robbyrussell/oh-my-zsh plugins/httpie/httpie.plugin.zsh
 
+  fresh robbyrussell/oh-my-zsh plugins/sudo/sudo.plugin.zsh
+
   # de-duplicate PATH
-  fresh akatov/dotfiles zshrc/dedup-path --ref=55e80fe
+  fresh akatov/dotfiles zshrc/dedup-path
 fresh-options
 
 fresh zsh-users/zsh-completions src/_ack --file=completion/_ack
@@ -85,11 +83,11 @@ fresh-options --bin
   fresh bin/\*
 fresh-options
 
-fresh_after_build() {
+# fresh_after_build() {
 
-  # init_vim
+#   # init_vim
 
-  if [[ "$(uname)" == "Darwin" ]]; then
-    install_backup_trigger
-  fi
-}
+#   # if [[ "$(uname)" == "Darwin" ]]; then
+#   #   install_backup_trigger
+#   # fi
+# }
