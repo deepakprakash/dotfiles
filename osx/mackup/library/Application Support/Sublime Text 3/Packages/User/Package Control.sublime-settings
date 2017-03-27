@@ -16,6 +16,7 @@
 		"SideBarEnhancements",
 		"SublimeCodeIntel",
 		"SublimeLinter",
-		"SublimeLinter-pep8"
+		"SublimeLinter-pep8",
+		"TypeScript"
 	]
 }
