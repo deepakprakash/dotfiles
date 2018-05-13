@@ -78,7 +78,7 @@ install_backup_trigger () {
 
 
 # Utils
-fresh sivel/speedtest-cli speedtest_cli.py --bin=~/bin/speedtest
+fresh sivel/speedtest-cli speedtest.py --bin=~/bin/speedtest
 
 fresh-options --bin
   fresh bin/\*
