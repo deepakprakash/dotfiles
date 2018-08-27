@@ -38,8 +38,8 @@ tools=(
 
 ## Languages
 "python"
-"ruby"
-"go"
+# "ruby"
+# "go"
 "node"
 
 ## Editors
