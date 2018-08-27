@@ -10,9 +10,6 @@ fi
 # Update homebrew recipes
 brew update
 
-# Tap more recent versions of some OS X tools
-brew tap homebrew/dupes
-
 echo "Install and setup brew cask..."
 brew cask
 brew tap caskroom/versions
