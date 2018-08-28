@@ -57,6 +57,23 @@ if [[ "$(uname)" == "Darwin" ]]; then
   fresh osx/functions/\*
   fresh osx/exports.sh
   fresh osx/aliases.sh
+
+  # Get the coreutils prefix from brew. By redirecting the stderr of the
+  # command to /dev/null, we avoid the error output to terminal if brew itself
+  # is not installed or in case of some other error.
+  # If brew is installed but coreutils is not installed, it will return
+  # a path, but its a non-existant path and hence will be taken care of by the
+  # subsequent if condition.
+  coreutils_prefix="$(brew --prefix coreutils 2>/dev/null)"
+
+  if [ -d "$coreutils_prefix/libexec/gnubin" ]; then
+    # https://stackoverflow.com/questions/16790793/how-to-replace-strings-containing-slashes-with-sed
+    fresh osx/gnu_coreutils.tmpl.sh --filter="sed 's|__GNU_COREUTILS_PREFIX__|$coreutils_prefix|g'"
+  else
+    echo 'WARNING: One or both of brew and coreutils are not installed. Hence will skip config for using coreutils. Re-run fresh once coreutils are installed to enable it.'
+  fi
+
+
 fi
 
 # ZSH Syntax Highlighting. Note that this needs to be as much at the end as possible.
