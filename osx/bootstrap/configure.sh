@@ -28,6 +28,10 @@ sudo pmset -a standbydelay 16800
 sudo nvram SystemAudioVolume=" "
 # Reset: nvram -d SystemAudioVolume
 
+# The battery drain in newer MacBooks (I think 2015 and newer) is because Apple decided to keep network connections alive
+# in standby even when not connected to a power supply. I think the main reason for this is to enable the "Find my Mac"
+# feature. The MacBook keeps searching for and connecting to WiFi networks even during sleep.
+sudo pmset -b tcpkeepalive 0
 
 # Disable transparency in the menu bar and elsewhere on Yosemite
 # defaults write com.apple.universalaccess reduceTransparency -bool true
