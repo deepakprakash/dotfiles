@@ -10,46 +10,46 @@ apps=(
 google-chrome
 firefox
 skype
-vlc
-the-unarchiver
-clipmenu
+# vlc
+# the-unarchiver
+# clipmenu
 transmission
-flux
-microsoft-office
+# flux
+# microsoft-office
 
 ## Utils
 appcleaner
 little-snitch
-disk-inventory-x
-teamviewer
+# disk-inventory-x
+# teamviewer
 
 ## Developer
 iterm2
 sublime-text
-vagrant
-virtualbox
-github-desktop
+github
 
 ## Photography
 # adobe-creative-cloud
 
 ## Quicklook Extensions
-qlcolorcode
-qlmarkdown
-qlprettypatch
-quicklook-json
-quicklook-csv
-betterzipql
-webpquicklook
-suspicious-package
+# qlcolorcode
+# qlmarkdown
+# qlprettypatch
+# quicklook-json
+# quicklook-csv
+# betterzipql
+# webpquicklook
+# suspicious-package
 
 ## Others
-handbrake
-imageoptim
-imagealpha
+# handbrake
+# imageoptim
+# imagealpha
 
 ## Unused
 #  spectacle
+#  vagrant
+#  virtualbox
 #  caffeine
 #  alfred
 #  screenflick

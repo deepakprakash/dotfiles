@@ -21,17 +21,17 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Set standby delay to 2 hours (default is 1 hour)
 # Speeds up wake from sleep. Ref: http://osxdaily.com/2013/01/21/mac-slow-wake-from-sleep-fix/
-sudo pmset -a standbydelay 16800
+# sudo pmset -a standbydelay 16800
 # Reset: sudo pmset -a standbydelay 4200
 
 # Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
+# sudo nvram SystemAudioVolume=" "
 # Reset: nvram -d SystemAudioVolume
 
 # The battery drain in newer MacBooks (I think 2015 and newer) is because Apple decided to keep network connections alive
 # in standby even when not connected to a power supply. I think the main reason for this is to enable the "Find my Mac"
 # feature. The MacBook keeps searching for and connecting to WiFi networks even during sleep.
-sudo pmset -b tcpkeepalive 0
+# sudo pmset -b tcpkeepalive 0
 
 # Disable transparency in the menu bar and elsewhere on Yosemite
 # defaults write com.apple.universalaccess reduceTransparency -bool true
@@ -46,8 +46,8 @@ sudo pmset -b tcpkeepalive 0
 defaults write com.apple.systemuiserver menuExtras -array \
 	"/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
 	"/System/Library/CoreServices/Menu Extras/AirPort.menu" \
-	"/System/Library/CoreServices/Menu Extras/Volume.menu" \
-	"/System/Library/CoreServices/Menu Extras/Battery.menu"
+	"/System/Library/CoreServices/Menu Extras/Volume.menu"
+	# "/System/Library/CoreServices/Menu Extras/Battery.menu" # Enable only for laptops
 
 
 # Set highlight color to green
@@ -70,7 +70,7 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
 # Increase window resize speed for Cocoa applications
 # The 0.001 that is usually used seems too quick for me.
-defaults write NSGlobalDomain NSWindowResizeTime -float 0.005
+# defaults write NSGlobalDomain NSWindowResizeTime -float 0.005
 # Reset: defaults delete NSGlobalDomain NSWindowResizeTime
 
 # Expand save panel by default
@@ -115,7 +115,7 @@ defaults write com.apple.CrashReporter DialogType -string "none"
 # Reset: defaults delete com.apple.CrashReporter DialogType
 
 # Set Help Viewer windows to non-floating mode
-defaults write com.apple.helpviewer DevMode -bool true
+# defaults write com.apple.helpviewer DevMode -bool true
 # Reset: defaults delete com.apple.helpviewer DevMode
 
 # Fix for the ancient UTF-8 bug in QuickLook (https://mths.be/bbo)
@@ -125,11 +125,11 @@ defaults write com.apple.helpviewer DevMode -bool true
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock
 # in the login window
-sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+# sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 # Reset: sudo defaults delete /Library/Preferences/com.apple.loginwindow AdminHostInfo
 
 # Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
+# sudo systemsetup -setrestartfreeze on
 
 # Never go into computer sleep mode
 # sudo systemsetup -setcomputersleep Off > /dev/null
@@ -175,7 +175,7 @@ sudo systemsetup -setrestartfreeze on
 # sudo chflags uchg /Private/var/vm/sleepimage
 
 # Disable the sudden motion sensor as it’s not useful for SSDs
-sudo pmset -a sms 0
+# sudo pmset -a sms 0
 # Reset: sudo pmset -a sms 1
 
 ###############################################################################
@@ -184,7 +184,7 @@ sudo pmset -a sms 0
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write -globalDomain NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # Reset:
 # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool false
@@ -216,12 +216,12 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Reset: defaults delete NSGlobalDomain AppleKeyboardUIMode
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+# defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+# defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 # Reset: defaults delete com.apple.universalaccess closeViewScrollWheelToggle; defaults delete com.apple.universalaccess HIDScrollZoomModifierMask
 
 # Follow the keyboard focus while zoomed in
-defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+# defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 # Reset: defaults delete com.apple.universalaccess closeViewZoomFollowsFocus
 
 # Disable press-and-hold for keys in favor of key repeat
@@ -237,7 +237,7 @@ defaults write NSGlobalDomain KeyRepeat -int 1
 # `Inches`, `en_GB` with `en_US`, and `true` with `false`.
 # defaults write NSGlobalDomain AppleLanguages -array "en" "nl"
 # defaults write NSGlobalDomain AppleLocale -string "en_GB@currency=EUR"
-defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+# defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 # Reset: defaults delete NSGlobalDomain AppleMeasurementUnits
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 # Reset: defaults delete NSGlobalDomain AppleMetricUnits
@@ -246,7 +246,7 @@ defaults write NSGlobalDomain AppleMetricUnits -bool true
 # sudo systemsetup -settimezone "Europe/Brussels" > /dev/null
 
 # Set the time from network/location
-sudo systemsetup -setusingnetworktime on > /dev/null
+# sudo systemsetup -setusingnetworktime on > /dev/null  # Already seems to be default
 # Reset: sudo systemsetup -setusingnetworktime off > /dev/null
 
 # Disable auto-correct
@@ -262,7 +262,7 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1 # This is default in any case
-defaults write com.apple.screensaver askForPasswordDelay -int 0
+defaults write com.apple.screensaver askForPasswordDelay -int 5
 # Reset: defaults write com.apple.screensaver askForPasswordDelay -int 300
 
 # Save screenshots to the desktop or any dir of your choice
@@ -278,10 +278,14 @@ defaults write com.apple.screencapture disable-shadow -bool true
 # Reset: defaults delete com.apple.screencapture disable-shadow
 
 # Enable subpixel font rendering on non-Apple LCDs
-defaults write NSGlobalDomain AppleFontSmoothing -int 2
+# https://www.howtogeek.com/358596/how-to-fix-blurry-fonts-on-macos-mojave-with-subpixel-antialiasing/
+defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
+# Reset: defaults delete CGFontRenderingFontSmoothingDisabled
+# Legacy Method:
+# defaults write NSGlobalDomain AppleFontSmoothing -int 2
 # Reset: defaults delete NSGlobalDomain AppleFontSmoothing
 
-# Enable HiDPI display modes (requires restart)
+# Enable HiDPI display modes (requires restart) (https://www.tekrevue.com/tip/hidpi-mode-os-x/)
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 # Reset: sudo defaults delete /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled
 
@@ -298,8 +302,15 @@ sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutio
 # Reset: defaults delete com.apple.finder DisableAllAnimations
 
 # Set Desktop as the default location for new Finder windows
+# Computer     : `PfCm`
+# Volume       : `PfVo`
+# $HOME        : `PfHm`
+# Desktop      : `PfDe`
+# Documents    : `PfDo`
+# All My Files : `PfAF`
+# Other…       : `PfLo`
 # For other paths, use `PfLo` and `file:///full/path/here/`
-defaults write com.apple.finder NewWindowTarget -string "PfLo"
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
 # Reset: defaults delete com.apple.finder NewWindowTarget
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 # Reset: defaults delete com.apple.finder NewWindowTargetPath
@@ -335,7 +346,7 @@ defaults write com.apple.finder QLEnableTextSelection -bool true
 # Reset: defaults delete com.apple.finder QLEnableTextSelection
 
 # Display full POSIX path as Finder window title
-defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+# defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 # Reset: defaults delete com.apple.finder _FXShowPosixPathInTitle
 
 # When performing a search, search the current folder by default
@@ -418,8 +429,12 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 
 
 # Use list view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
-defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+# Four-letter codes for the other view modes:
+# Icon View   : `icnv`
+# List View   : `Nlsv`
+# Column View : `clmv`
+# Cover Flow  : `Flwv`
+# defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
 # Disable the warning before emptying the Trash
 # defaults write com.apple.finder WarnOnEmptyTrash -bool false
@@ -429,8 +444,8 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 # defaults write com.apple.finder EmptyTrashSecurely -bool true
 # Reset: defaults delete com.apple.finder EmptyTrashSecurely
 
-# Enable AirDrop over Ethernet and on unsupported Macs running Lion
-defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
+# Enable AirDrop over Ethernet and on unsupported Macs running Lion (doesnt seem to work on Mojave)
+# defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 # Reset: defaults delete com.apple.NetworkBrowser BrowseAllInterfaces
 
 # Enable the MacBook Air SuperDrive on any Mac; doesnt work from Sierra unless you are
@@ -459,7 +474,7 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 ###############################################################################
 
 # Enable highlight hover effect for the grid view of a stack (Dock)
-defaults write com.apple.dock mouse-over-hilite-stack -bool true
+# defaults write com.apple.dock mouse-over-hilite-stack -bool true
 # Reset: defaults delete com.apple.dock mouse-over-hilite-stack
 
 # Set the icon size of Dock items to 40 pixels
@@ -471,11 +486,11 @@ defaults write com.apple.dock tilesize -int 40
 # Reset: defaults delete com.apple.dock mineffect
 
 # Minimize windows into their application’s icon
-defaults write com.apple.dock minimize-to-application -bool true
+# defaults write com.apple.dock minimize-to-application -bool true
 # Reset: defaults delete com.apple.dock minimize-to-application
 
 # Enable spring loading for all Dock items
-defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
+# defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 # Reset: defaults delete com.apple.dock enable-spring-load-actions-on-all-items
 
 # Show indicator lights for open applications in the Dock
@@ -516,15 +531,15 @@ defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 # Reset: defaults delete com.apple.dock mru-spaces
 
 # Automatically hide and show the Dock
-# defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide -bool true
 # Reset: defaults delete com.apple.dock autohide
 
 # Remove the auto-hiding Dock delay
-# defaults write com.apple.dock autohide-delay -float 0.2
+defaults write com.apple.dock autohide-delay -float 0.2
 # Reset: defaults delete com.apple.dock autohide-delay
 
 # Reduce the animation delay when hiding/showing the Dock; To remove animation, set as 0
-# defaults write com.apple.dock autohide-time-modifier -float 0.2
+defaults write com.apple.dock autohide-time-modifier -float 0.5
 # Reset: defaults delete com.apple.dock autohide-time-modifier
 
 # Make Dock icons of hidden applications translucent
@@ -570,8 +585,8 @@ defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 # Reset: defaults delete com.apple.dock wvous-tr-corner; defaults delete com.apple.dock wvous-tr-modifier
 
 # Bottom left screen corner → Start screen saver
-defaults write com.apple.dock wvous-bl-corner -int 5
-defaults write com.apple.dock wvous-bl-modifier -int 0
+# defaults write com.apple.dock wvous-bl-corner -int 5
+# defaults write com.apple.dock wvous-bl-modifier -int 0
 # Reset: defaults delete com.apple.dock wvous-bl-corner; defaults delete com.apple.dock wvous-bl-modifier
 
 ###############################################################################
@@ -590,15 +605,15 @@ defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 # defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true
 
 # Hide Safari’s bookmarks bar by default
-defaults write com.apple.Safari ShowFavoritesBar -bool false
+# defaults write com.apple.Safari ShowFavoritesBar -bool false
 # Reset: defaults delete com.apple.Safari ShowFavoritesBar
 
 # Hide Safari’s sidebar in Top Sites
-defaults write com.apple.Safari ShowSidebarInTopSites -bool false
+# defaults write com.apple.Safari ShowSidebarInTopSites -bool false
 # Reset: defaults delete com.apple.Safari ShowSidebarInTopSites
 
 # Disable Safari’s thumbnail cache for History and Top Sites
-defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+# defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 # Reset: defaults delete com.apple.Safari DebugSnapshotsUpdatePolicy
 
 # Enable Safari’s debug menu
@@ -772,7 +787,7 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 ###############################################################################
 
 # Enable the debug menu in Address Book
-defaults write com.apple.addressbook ABShowDebugMenu -bool true
+# defaults write com.apple.addressbook ABShowDebugMenu -bool true
 # Reset: defaults delete com.apple.addressbook ABShowDebugMenu
 
 # Enable Dashboard dev mode (allows keeping widgets on the desktop)
