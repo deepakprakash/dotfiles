@@ -84,7 +84,12 @@ function prompt_user_host
     set_color $fish_color_user
     printf '%s' $USER
 
-    set_color $fish_color_host
+    if set -q SSH_CONNECTION;
+        set_color $fish_color_error
+    else
+        set_color $fish_color_host
+    end
+
     printf '@%s' (prompt_hostname)
 
     set_color normal
