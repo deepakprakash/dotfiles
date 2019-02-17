@@ -25,11 +25,7 @@ function prompt_pwd_custom --description "Custom replacement that includes indic
     set realhome ~
     set -l tmp (string replace -r '^'"$realhome"'($|/)' '~$1' $PWD)
 
-    if test -z $fish_prompt_pwd_dir_length
-        # Printout whole path if $fish_prompt_pwd_dir_length not defined/valid
-        printf $tmp
-        return 0
-    else
+    if set -q fish_prompt_pwd_dir_length;
         # Shorten to at most $fish_prompt_pwd_dir_length characters per path part
 
         set --local parts (string split '/' $tmp)  # Split into separate path parts
@@ -46,6 +42,10 @@ function prompt_pwd_custom --description "Custom replacement that includes indic
 
         # Join to get the final output
         string join '/' $parts_processed $parts[-1]
+    else
+        # Output whole path if $fish_prompt_pwd_dir_length not defined/valid
+        printf $tmp
+        return 0
     end
 
 end
