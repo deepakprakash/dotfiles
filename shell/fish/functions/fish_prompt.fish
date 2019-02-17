@@ -103,6 +103,15 @@ function prompt_python_virtualenv
     end
 end
 
+
+function prompt_jobs
+    if jobs -q
+        # There is atleast one job
+        printf (set_color --dim $fish_color_command)'⥉'(jobs | wc -l | xargs)(set_color normal)
+    end
+end
+
+
 function prompt_date
     # https://www.cyberciti.biz/faq/linux-unix-formatting-dates-for-display/
     set_color --dim
@@ -110,11 +119,12 @@ function prompt_date
     set_color normal
 end
 
+
 function fish_prompt_first_line
 
     printf (set_color --dim grey)'\n#'(set_color normal)
 
-    for section in (prompt_user_host) (prompt_git) (prompt_python_virtualenv) (prompt_date)
+    for section in (prompt_user_host) (prompt_git) (prompt_python_virtualenv) (prompt_jobs) (prompt_date)
         if test -z $section
             continue
         end
