@@ -1,4 +1,5 @@
 # Fish color theme based on ansi-16 colors
+# https://fishshell.com/docs/current/index#variables-color
 set -g fish_color_autosuggestion normal
 set -g fish_color_cancel brmagenta
 set -g fish_color_command blue
