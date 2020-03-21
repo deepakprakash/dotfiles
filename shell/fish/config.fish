@@ -27,3 +27,5 @@ set -g fish_pager_color_completion brcyan
 set -g fish_pager_color_description yellow
 set -g fish_pager_color_prefix white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 set -g fish_pager_color_progress brwhite\x1e\x2d\x2dbackground\x3dcyan
+
+set -g EDITOR vim
