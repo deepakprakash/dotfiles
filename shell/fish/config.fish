@@ -29,3 +29,9 @@ set -g fish_pager_color_prefix white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 set -g fish_pager_color_progress brwhite\x1e\x2d\x2dbackground\x3dcyan
 
 set -g EDITOR vim
+
+# Add $HOME/bin to PATH if it exists
+if test -d $HOME/bin
+    # https://fishshell.com/docs/2.4/tutorial.html#tut_path
+    set --prepend fish_user_paths $HOME/bin
+end
