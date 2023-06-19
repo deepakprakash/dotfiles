@@ -103,6 +103,13 @@ function prompt_python_virtualenv
     end
 end
 
+function prompt_aws_profile
+    if set -q AWS_PROFILE
+        set_color brmagenta
+        printf 'aws: %s' (basename $AWS_PROFILE)
+        set_color normal
+    end
+end
 
 function prompt_jobs
     if jobs -q
@@ -123,8 +130,9 @@ end
 function fish_prompt_first_line
 
     printf (set_color --dim grey)'\n#'(set_color normal)
+    #  (prompt_status)
 
-    for section in (prompt_user_host) (prompt_git) (prompt_python_virtualenv) (prompt_jobs) (prompt_date) (prompt_status)
+    for section in (prompt_user_host) (prompt_git) (prompt_python_virtualenv) (prompt_aws_profile) (prompt_jobs) (prompt_date)
         if test -z $section
             continue
         end
