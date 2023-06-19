@@ -20,14 +20,18 @@ function _set_prompt_status --on-event fish_postexec
     # Save the real status of the command for later use.
     set --local real_status $status
 
-    # argv[1] contains the full commandline. We check if it is empty ot just white space
-    # and set _prompt_status if that is the case. This is a hack.
-    # Since this is a hack, it fails for the comment use case for instance.
-    if test -z (string trim $argv[1])
-        set _prompt_status 0
-    else
-        set _prompt_status $real_status
+    # # argv[1] contains the full commandline. We check if it is empty ot just white space
+    # # and set _prompt_status if that is the case. This is a hack.
+    # # Since this is a hack, it fails for the comment use case for instance.
+    # if test -z (string trim $argv[1])
+    #     set _prompt_status 0
+    # else
+    #     set _prompt_status $real_status
+    # end
+    if test $real_status -ne 0
+        printf (set_color $fish_color_error)'\nExited with error: %s\n'(set_color normal) $real_status
     end
+    # printf (set_color $fish_color_error)'⚠ %s'(set_color normal) $real_status
 
 end
 
